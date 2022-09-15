@@ -17,7 +17,9 @@ export default function Checkboxes() {
                 <Checkbox {...label} disabled checked />
 
                 <FormControlLabel control={<Checkbox defaultChecked />} label="Label" />
+                <FormControlLabel control={<Checkbox color="secondary" checked />} label="Label" />
                 <FormControlLabel disabled control={<Checkbox />} label="Disabled" />
+                <FormControlLabel disabled checked control={<Checkbox />} label="Disabled" />
             </FormGroup>
         </div>
     );

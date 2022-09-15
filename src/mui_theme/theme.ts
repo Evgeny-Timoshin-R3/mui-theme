@@ -113,6 +113,7 @@ export const theme = createTheme({
         },
         secondary: {
             main: '#5e39e9',
+            light: '#bfb0f6',
         },
         // background: {},
         error: { main: ERROR_COLOR },
