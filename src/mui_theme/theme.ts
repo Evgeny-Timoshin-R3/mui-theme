@@ -83,7 +83,7 @@ export const theme = createTheme({
                     '&$focused $notchedOutline': {
                         borderColor: 'red',
                     },
-                    '& legend': { paddingRight: 4, width: 'fit-content' },
+                    '& legend>span': { paddingRight: 4, width: 'fit-content', marginRight: 4 },
                 },
                 notchedOutline: {
                     root: { borderColor: 'white', '& legend': { padding: 2 + '!important' } },
