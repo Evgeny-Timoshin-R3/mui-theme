@@ -8,7 +8,7 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 export default function Checkboxes() {
     return (
-        <div style={{ width: 100 }}>
+        <>
             <FormGroup>
                 <Checkbox color="secondary" {...label} defaultChecked />
                 <Checkbox {...label} checked />
@@ -21,6 +21,6 @@ export default function Checkboxes() {
                 <FormControlLabel disabled control={<Checkbox />} label="Disabled" />
                 <FormControlLabel disabled checked control={<Checkbox />} label="Disabled" />
             </FormGroup>
-        </div>
+        </>
     );
 }

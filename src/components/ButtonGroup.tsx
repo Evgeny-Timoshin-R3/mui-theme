@@ -5,12 +5,59 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 
 export default function BasicButtonGroup() {
     return (
-        <div style={{ width: 'fit-content' }}>
+        <>
             <ButtonGroup variant="outlined" aria-label="outlined primary button group">
                 <Button>One</Button>
                 <Button>Two</Button>
                 <Button>Three</Button>
             </ButtonGroup>
-        </div>
+            <ButtonGroup
+                color="secondary"
+                disableElevation
+                aria-label="outlined primary button group"
+            >
+                <Button>One</Button>
+                <Button>Two</Button>
+                <Button>Three</Button>
+            </ButtonGroup>
+            <ButtonGroup
+                color="secondary"
+                disableElevation
+                aria-label="outlined primary button group"
+            >
+                <Button>One</Button>
+                <Button>Two</Button>
+                <Button>Three</Button>
+            </ButtonGroup>
+            <ButtonGroup
+                variant="contained"
+                disableElevation
+                aria-label="outlined primary button group"
+            >
+                <Button>One</Button>
+                <Button>Two</Button>
+                <Button>Three</Button>
+            </ButtonGroup>
+            <ButtonGroup
+                color="secondary"
+                variant="contained"
+                disableElevation
+                aria-label="outlined primary button group"
+            >
+                <Button>One</Button>
+                <Button>Two</Button>
+                <Button>Three</Button>
+            </ButtonGroup>
+            <ButtonGroup
+                color="secondary"
+                variant="text"
+                disableElevation
+                aria-label="outlined primary button group"
+            >
+                <Button>One</Button>
+                <Button>Two</Button>
+                <Button>Three</Button>
+            </ButtonGroup>
+        </>
     );
 }

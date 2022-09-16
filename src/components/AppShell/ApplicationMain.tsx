@@ -2,6 +2,7 @@ import React from 'react';
 import { styled } from '@mui/material';
 
 const Main = styled('main')(({ theme }) => ({
+    display: 'flex',
     flexGrow: 1,
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {

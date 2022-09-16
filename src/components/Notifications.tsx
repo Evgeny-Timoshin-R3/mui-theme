@@ -1,5 +1,6 @@
-import { Button, Stack, Typography } from '@mui/material';
 import { SnackbarProvider, useSnackbar } from 'notistack';
+
+import { Button } from '@mui/material';
 
 export default function Notifications() {
     return (
@@ -12,7 +13,7 @@ export default function Notifications() {
 function NotificationButtons() {
     const { enqueueSnackbar } = useSnackbar();
     return (
-        <Stack direction={'row'} gap={4} marginTop={8}>
+        <>
             <div></div>
             <Button
                 variant="contained"
@@ -50,6 +51,6 @@ function NotificationButtons() {
             >
                 Error Notif
             </Button>
-        </Stack>
+        </>
     );
 }

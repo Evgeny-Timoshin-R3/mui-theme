@@ -101,12 +101,12 @@ const DrawerTreeView: React.FC<{ open: boolean }> = ({ open }) => {
             defaultExpandIcon={<ArrowRightIcon />}
             defaultEndIcon={<div style={{ width: 24 }} />}
             sx={{
-                marginLeft: open ? 0 : -2.2,
-                height: 264,
+                marginLeft: open ? 0 : -2.1,
                 maxWidth: 400,
                 display: 'flex',
                 flexDirection: 'column',
                 gap: 2,
+                height: 'auto',
                 pointerEvents: !open ? 'none' : undefined,
             }}
         >

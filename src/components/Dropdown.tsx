@@ -17,7 +17,7 @@ export default function Dropdown() {
     };
 
     return (
-        <div style={{ display: 'flex', flexDirection: 'row', gap: 4 }}>
+        <>
             <Button
                 id="basic-button"
                 aria-controls={open ? 'basic-menu' : undefined}
@@ -65,6 +65,6 @@ export default function Dropdown() {
                 <MenuItem onClick={handleClose}>My account</MenuItem>
                 <MenuItem onClick={handleClose}>Logout</MenuItem>
             </Menu>
-        </div>
+        </>
     );
 }
