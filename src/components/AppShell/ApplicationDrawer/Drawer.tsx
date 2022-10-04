@@ -24,10 +24,19 @@ const closedMixin = (theme: Theme): CSSObject => ({
 });
 
 const themeColors = (theme: Theme): CSSObject => ({
-    backgroundColor: theme.palette.primary.main + '!important',
-    color: theme.palette.secondary.light,
+    backgroundColor:
+        theme.palette.mode === 'light'
+            ? theme.palette.primary.dark
+            : theme.palette.background.default,
+    color:
+        theme.palette.mode === 'light'
+            ? theme.palette.primary.contrastText
+            : theme.palette.secondary.main,
     '& .MuiSvgIcon-root': {
-        color: theme.palette.secondary.light,
+        color:
+            theme.palette.mode === 'light'
+                ? theme.palette.primary.contrastText
+                : theme.palette.secondary.main,
     },
 });
 

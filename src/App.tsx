@@ -1,5 +1,7 @@
 import './App.css';
 
+import { CssBaseline, Stack } from '@mui/material';
+
 import Alerts from './components/Alerts';
 import AppShell from './components/AppShell/AppShell';
 import BasicButtonGroup from './components/ButtonGroup';
@@ -16,8 +18,9 @@ import Notifications from './components/Notifications';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import SimpleBottomNavigation from './components/BottomNavigation';
-import { Stack } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
 import TypographyExamples from './components/Typography';
+import { useThemeModeContext } from './contexts/ThemeModeContext';
 
 const examples = [
     ['Typography Examples', <TypographyExamples />],
@@ -38,15 +41,22 @@ const examples = [
 ];
 
 function App() {
+    const { theme } = useThemeModeContext();
+    console.log('RENDER');
     return (
         <div className="App">
-            <AppShell>
-                <Stack direction="column" spacing={8} marginBottom={32} marginTop={12}>
-                    {examples.map((example) => (
-                        <ExampleWrapper title={example[0] as string}>{example[1]}</ExampleWrapper>
-                    ))}
-                </Stack>
-            </AppShell>
+            <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <AppShell>
+                    <Stack direction="column" spacing={8} marginBottom={32} marginTop={12}>
+                        {examples.map((example) => (
+                            <ExampleWrapper title={example[0] as string}>
+                                {example[1]}
+                            </ExampleWrapper>
+                        ))}
+                    </Stack>
+                </AppShell>
+            </ThemeProvider>
         </div>
     );
 }

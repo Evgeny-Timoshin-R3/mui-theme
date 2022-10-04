@@ -54,8 +54,8 @@ const ApplicationDrawer = () => {
 
             <DrawerListView open={open} />
             <div style={{ marginTop: 50 }} />
-            <DrawerTreeView open={open} />
-            <Divider />
+            {/* <DrawerTreeView open={open} /> */}
+            {/* <Divider /> */}
         </Drawer>
     );
 };

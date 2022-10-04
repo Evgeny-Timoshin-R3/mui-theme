@@ -1,8 +1,10 @@
 import type {} from '@mui/x-date-pickers/themeAugmentation';
 
-import { blue, green, orange, red } from '@mui/material/colors';
+import { ERROR_COLOR, INFO_COLOR, SUCCESS_COLOR, WARNING_COLOR } from './colors/utilityColors';
 
+import cordaLightPalette from './colorPalettes/cordaLightPalette';
 import { createTheme } from '@mui/material';
+import { orange } from '@mui/material/colors';
 
 declare module '@mui/material/styles' {
     interface Theme {
@@ -18,12 +20,7 @@ declare module '@mui/material/styles' {
     }
 }
 
-const WARNING_COLOR = orange[500];
-const ERROR_COLOR = red[500];
-const SUCCESS_COLOR = green[500];
-const INFO_COLOR = blue[500];
-
-export const theme = createTheme({
+const theme = createTheme({
     //these are default breakpoint, "overriding" them to expose and show example of how they can be modified
     breakpoints: {
         keys: ['xs', 'sm', 'md', 'lg', 'xl'],
@@ -103,25 +100,10 @@ export const theme = createTheme({
 
     //Overall borderRadius override
     shape: { borderRadius: 12 },
-
-    //Application colors
-    //If the "main" color is defined, the light and dark variants of the color will be automatically generated
-    //e.g if the primary main is blue, light and dark blue will be generated.
-    palette: {
-        primary: {
-            main: '#1d2343',
-        },
-        secondary: {
-            main: '#5e39e9',
-            light: '#bfb0f6',
-        },
-        // background: {},
-        error: { main: ERROR_COLOR },
-        info: { main: INFO_COLOR },
-        success: { main: SUCCESS_COLOR },
-        warning: { main: WARNING_COLOR },
-    },
+    palette: cordaLightPalette,
     status: {
         danger: orange[500],
     },
 });
+
+export default theme;

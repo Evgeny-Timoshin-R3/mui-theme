@@ -11,7 +11,10 @@ import {
 } from '@mui/material';
 
 import { AccountCircle } from '@mui/icons-material';
-import LogoR3 from '../../../svgs/LogoR3';
+import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
+import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
+import LogoR3Dark from '../../../svgs/LogoR3Dark';
+import LogoR3Light from '../../../svgs/LogoR3Light';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import Search from './Search';
@@ -19,10 +22,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import SearchIconWrapper from './SearchIconWrapper';
 import StyledInputBase from './StyledInputBase';
 import { useState } from 'react';
+import { useThemeModeContext } from '../../../contexts/ThemeModeContext';
 
 const ApplicationBar = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const isMenuOpen = Boolean(anchorEl);
+
+    const { mode, setThemeMode } = useThemeModeContext();
 
     const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
         setAnchorEl(event.currentTarget);
@@ -60,13 +66,21 @@ const ApplicationBar = () => {
                 position="fixed"
                 sx={{
                     zIndex: (theme) => theme.zIndex.drawer + 1,
-                    backgroundColor: (theme) => theme.palette.grey[200],
-                    color: (theme) => theme.palette.grey[800],
+                    backgroundColor: (theme) =>
+                        theme.palette.mode === 'light'
+                            ? theme.palette.grey.A200
+                            : theme.palette.background.default,
+                    color: (theme) =>
+                        theme.palette.mode === 'light'
+                            ? theme.palette.grey[800]
+                            : theme.palette.grey[100],
                 }}
             >
                 <Toolbar>
-                    <SvgIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }}>
-                        <LogoR3 />
+                    <SvgIcon
+                        sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, width: 36, height: 36 }}
+                    >
+                        {mode === 'dark' ? <LogoR3Light /> : <LogoR3Dark />}
                     </SvgIcon>
                     <Typography
                         variant="h6"
@@ -79,14 +93,14 @@ const ApplicationBar = () => {
                             display: { xs: 'none', md: 'flex' },
                             fontFamily: 'monospace',
                             fontWeight: 700,
-                            letterSpacing: '.2rem',
+                            letterSpacing: '.1rem',
                             color: 'inherit',
                             textDecoration: 'none',
                         }}
                     >
                         R3 Application Title
                     </Typography>
-                    <Search>
+                    {/* <Search>
                         <SearchIconWrapper>
                             <SearchIcon />
                         </SearchIconWrapper>
@@ -94,7 +108,7 @@ const ApplicationBar = () => {
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
                         />
-                    </Search>
+                    </Search> */}
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -121,6 +135,15 @@ const ApplicationBar = () => {
                             color="inherit"
                         >
                             <AccountCircle />
+                        </IconButton>
+
+                        <IconButton
+                            onClick={() => {
+                                setThemeMode(mode === 'light' ? 'dark' : 'light');
+                            }}
+                            sx={{ marginLeft: 3 }}
+                        >
+                            {mode === 'dark' ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
                         </IconButton>
                     </Box>
                 </Toolbar>
