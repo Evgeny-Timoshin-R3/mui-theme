@@ -42,22 +42,17 @@ const examples = [
 
 function App() {
     const { theme } = useThemeModeContext();
-    console.log('RENDER');
     return (
-        <div className="App">
-            <ThemeProvider theme={theme}>
-                <CssBaseline />
-                <AppShell>
-                    <Stack direction="column" spacing={8} marginBottom={32} marginTop={12}>
-                        {examples.map((example) => (
-                            <ExampleWrapper title={example[0] as string}>
-                                {example[1]}
-                            </ExampleWrapper>
-                        ))}
-                    </Stack>
-                </AppShell>
-            </ThemeProvider>
-        </div>
+        <ThemeProvider theme={theme}>
+            <CssBaseline />
+            <AppShell>
+                <Stack direction="column" spacing={8} marginBottom={32} marginTop={12}>
+                    {examples.map((example) => (
+                        <ExampleWrapper title={example[0] as string}>{example[1]}</ExampleWrapper>
+                    ))}
+                </Stack>
+            </AppShell>
+        </ThemeProvider>
     );
 }
 

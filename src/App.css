@@ -1,6 +1,4 @@
 #root {
     padding: 2rem;
-}
-
-.App {
+    max-width: 1366px;
 }

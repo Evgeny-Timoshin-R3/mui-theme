@@ -2,19 +2,18 @@ import { ERROR_COLOR, INFO_COLOR, SUCCESS_COLOR, WARNING_COLOR } from '../colors
 
 import { PaletteOptions } from '@mui/material';
 import background from '../colors/background';
-import brandedBlue from '../colors/brandedBlue';
-import brandedPurple from '../colors/brandedPurple';
+import brandedSecondaryBlue from '../colors/brandedSecondaryBlue';
 import paper from '../colors/paper';
 import text from '../colors/text';
 
-const cordaLightPalette: PaletteOptions = {
+const cordaLightPaletteBlue: PaletteOptions = {
     mode: 'light',
     background: { default: background.light, paper: paper.light },
     primary: {
-        main: brandedBlue[900],
+        main: brandedSecondaryBlue[900],
     },
     secondary: {
-        main: brandedPurple[400],
+        main: brandedSecondaryBlue[300],
     },
     text: { primary: text.dark },
     error: { main: ERROR_COLOR },
@@ -23,4 +22,4 @@ const cordaLightPalette: PaletteOptions = {
     warning: { main: WARNING_COLOR },
 };
 
-export default cordaLightPalette;
+export default cordaLightPaletteBlue;

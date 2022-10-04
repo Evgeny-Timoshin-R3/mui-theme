@@ -17,10 +17,6 @@ import LogoR3Dark from '../../../svgs/LogoR3Dark';
 import LogoR3Light from '../../../svgs/LogoR3Light';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import Search from './Search';
-import SearchIcon from '@mui/icons-material/Search';
-import SearchIconWrapper from './SearchIconWrapper';
-import StyledInputBase from './StyledInputBase';
 import { useState } from 'react';
 import { useThemeModeContext } from '../../../contexts/ThemeModeContext';
 
@@ -88,18 +84,35 @@ const ApplicationBar = () => {
                         component="a"
                         href="/"
                         sx={{
-                            ml: 4,
-                            mr: 2,
-                            display: { xs: 'none', md: 'flex' },
-                            fontFamily: 'monospace',
-                            fontWeight: 700,
+                            ml: 3,
+                            fontWeight: 600,
                             letterSpacing: '.1rem',
                             color: 'inherit',
                             textDecoration: 'none',
                         }}
                     >
-                        R3 Application Title
+                        Theming Demo App
                     </Typography>
+                    <Typography
+                        noWrap
+                        sx={{
+                            ml: 2,
+                            mt: 0.5,
+                            display: { xs: 'none', md: 'flex' },
+                            fontSize: 14,
+                            fontWeight: 500,
+                            color: 'inherit',
+                            textDecoration: 'none',
+                        }}
+                    >
+                        Powered By
+                    </Typography>
+                    <img
+                        src="./cordaRed.png"
+                        height={30}
+                        style={{ marginLeft: 3, marginBottom: 2 }}
+                    />
+
                     {/* <Search>
                         <SearchIconWrapper>
                             <SearchIcon />

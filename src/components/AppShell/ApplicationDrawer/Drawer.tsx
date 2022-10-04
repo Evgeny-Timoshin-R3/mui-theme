@@ -1,6 +1,7 @@
 import { CSSObject, Theme, styled } from '@mui/material/styles';
 
 import MuiDrawer from '@mui/material/Drawer';
+import { grey } from '@mui/material/colors';
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: 240,
@@ -28,15 +29,9 @@ const themeColors = (theme: Theme): CSSObject => ({
         theme.palette.mode === 'light'
             ? theme.palette.primary.dark
             : theme.palette.background.default,
-    color:
-        theme.palette.mode === 'light'
-            ? theme.palette.primary.contrastText
-            : theme.palette.secondary.main,
+    color: grey[50],
     '& .MuiSvgIcon-root': {
-        color:
-            theme.palette.mode === 'light'
-                ? theme.palette.primary.contrastText
-                : theme.palette.secondary.main,
+        color: grey[50],
     },
 });
 

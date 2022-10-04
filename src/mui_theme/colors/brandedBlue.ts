@@ -1,7 +1,7 @@
 //colours generated on this website, using the GUI toolkit "dark-grey" (which is not at all dark-grey) as reference
 //https://material.io/design/color/the-color-system.html#color-theme-creation
 
-const blue = {
+const brandedBlue = {
     50: '#e6e9ee',
     100: '#c1c7d6',
     200: '#99a3ba',
@@ -14,4 +14,4 @@ const blue = {
     900: '#1D2343',
 };
 
-export default blue;
+export default brandedBlue;
