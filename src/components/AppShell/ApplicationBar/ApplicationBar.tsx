@@ -107,11 +107,19 @@ const ApplicationBar = () => {
                     >
                         Powered By
                     </Typography>
-                    <img
-                        src="./cordaRed.png"
-                        height={30}
-                        style={{ marginLeft: 3, marginBottom: 2 }}
-                    />
+                    {mode === 'light' ? (
+                        <img
+                            src="./cordaBlack.png"
+                            height={30}
+                            style={{ marginLeft: 3, marginBottom: 2 }}
+                        />
+                    ) : (
+                        <img
+                            src="./cordaRed.png"
+                            height={30}
+                            style={{ marginLeft: 3, marginBottom: 2 }}
+                        />
+                    )}
 
                     {/* <Search>
                         <SearchIconWrapper>
