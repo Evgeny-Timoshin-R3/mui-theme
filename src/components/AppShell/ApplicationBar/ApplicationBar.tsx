@@ -96,7 +96,7 @@ const ApplicationBar = () => {
                     <Typography
                         noWrap
                         sx={{
-                            ml: 2,
+                            ml: 1,
                             mt: 0.5,
                             display: { xs: 'none', md: 'flex' },
                             fontSize: 14,
