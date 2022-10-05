@@ -20,12 +20,14 @@ import Notifications from './components/Notifications';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import SimpleBottomNavigation from './components/BottomNavigation';
+import SkeletonExample from './components/Skeleton';
 import { ThemeProvider } from '@mui/material/styles';
 import TypographyExamples from './components/Typography';
 import { useThemeModeContext } from './contexts/ThemeModeContext';
 
 const examples = [
     ['Typography Examples', <TypographyExamples />],
+    ['Skeleton Example', <SkeletonExample />],
     ['Button Sizes', <ButtonSizes />],
     ['Icon Buttons', <IconButtons />],
     ['Button groups', <BasicButtonGroup />],

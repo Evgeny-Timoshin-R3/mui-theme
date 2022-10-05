@@ -4,6 +4,7 @@ import cordaLightPalette from './colorPalettes/cordaLightPalette';
 import cordaLightPaletteBlue from './colorPalettes/cordaLightPaletteBlue';
 
 export const lightPalette = cordaLightPalette;
-export const darkPalette = cordaDarkPalette;
 // export const lightPalette = cordaLightPaletteBlue;
-// export const darkPalette = cordaDarkPaletteRed;
+
+export const darkPalette = cordaDarkPalette;
+//export const darkPalette = cordaDarkPaletteRed;
