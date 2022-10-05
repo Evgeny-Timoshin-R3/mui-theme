@@ -1,12 +1,26 @@
+import { Button, styled } from '@mui/material';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
-import { Button } from '@mui/material';
+const StyledSnackbarProvider = styled(SnackbarProvider)(({ theme }) => ({
+    '&.SnackbarItem-variantSuccess': {
+        backgroundColor: theme.palette.success.main,
+    },
+    '&.SnackbarItem-variantInfo': {
+        backgroundColor: theme.palette.info.main,
+    },
+    '&.SnackbarItem-variantWarning': {
+        backgroundColor: theme.palette.warning.main,
+    },
+    '&.SnackbarItem-variantError': {
+        backgroundColor: theme.palette.error.main,
+    },
+}));
 
 export default function Notifications() {
     return (
-        <SnackbarProvider maxSnack={3}>
+        <StyledSnackbarProvider maxSnack={3}>
             <NotificationButtons />
-        </SnackbarProvider>
+        </StyledSnackbarProvider>
     );
 }
 

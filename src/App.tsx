@@ -8,6 +8,8 @@ import BasicButtonGroup from './components/ButtonGroup';
 import ButtonSizes from './components/ButtonsSizes';
 import Checkboxes from './components/Checkboxes';
 import Chips from './components/Chips';
+import CustomPaginationActionsTable from './components/CustomerPaginationActionsTable';
+import DataTable from './components/DataTable';
 import DateTimePickers from './components/DateTimePickers';
 import Dropdown from './components/Dropdown';
 import ExampleWrapper from './components/ExampleLayout/ExampleWrapper';
@@ -38,6 +40,8 @@ const examples = [
     ['Sign In', <SignIn />],
     ['Sign Up', <SignUp />],
     ['Bottom Nav', <SimpleBottomNavigation />],
+    ['Table with actions', <CustomPaginationActionsTable />],
+    ['Data Table using mui-grid', <DataTable />],
 ];
 
 function App() {

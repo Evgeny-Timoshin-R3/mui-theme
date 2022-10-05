@@ -3,19 +3,21 @@ import { ERROR_COLOR, INFO_COLOR, SUCCESS_COLOR, WARNING_COLOR } from '../colors
 import { PaletteOptions } from '@mui/material';
 import background from '../colors/background';
 import brandedBlue from '../colors/brandedBlue';
+import brandedPurple from '../colors/brandedPurple';
 import brandedSecondaryBlue from '../colors/brandedSecondaryBlue';
+import brandedSecondaryRed from '../colors/brandedSecondaryRed';
 import { grey } from '@mui/material/colors';
 import paper from '../colors/paper';
 import text from '../colors/text';
 
 const cordaDarkPalette: PaletteOptions = {
     mode: 'dark',
-    background: { default: background.dark, paper: paper.dark },
+    background: { default: brandedBlue[900], paper: brandedBlue[900] },
     primary: {
-        main: brandedBlue[400],
+        main: grey[50],
     },
     secondary: {
-        main: grey[50],
+        main: brandedPurple[100],
     },
     text: { primary: text.light },
     error: { main: ERROR_COLOR },

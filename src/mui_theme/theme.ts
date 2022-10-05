@@ -58,20 +58,28 @@ const theme = createTheme({
                 },
             },
         },
+        MuiButtonBase: {
+            defaultProps: { disableRipple: true },
+        },
         MuiButton: {
             styleOverrides: {
                 root: {
                     borderRadius: 28,
+                    borderWidth: 2,
                     padding: '12px 24px 12px 24px',
                     gap: 8,
                     fontWeight: 600,
                     letterSpacing: 0.8,
+                    '&.Mui-disabled': {
+                        opacity: 0.8,
+                    },
                 },
             },
         },
         MuiOutlinedInput: {
             styleOverrides: {
                 root: {
+                    fontWeight: 400,
                     borderRadius: 28,
                     '& $notchedOutline': {
                         borderColor: 'pink',
@@ -81,6 +89,12 @@ const theme = createTheme({
                         borderColor: 'red',
                     },
                     '& legend>span': { paddingRight: 4, width: 'fit-content', marginRight: 4 },
+                    '& .Mui-disabled': {
+                        opacity: 0.4 + '!important',
+                        '&:hover': {
+                            cursor: 'not-allowed',
+                        },
+                    },
                 },
                 notchedOutline: {
                     root: { borderColor: 'white', '& legend': { padding: 2 + '!important' } },
@@ -92,7 +106,13 @@ const theme = createTheme({
                 root: { '& input': { color: 'red' } },
             },
         },
-        MuiInputBase: { styleOverrides: { root: { paddingLeft: 12 } } },
+        MuiInputBase: {
+            styleOverrides: {
+                root: {
+                    paddingLeft: 12,
+                },
+            },
+        },
         MuiInputLabel: {
             styleOverrides: { root: { paddingLeft: 8 } },
         },
