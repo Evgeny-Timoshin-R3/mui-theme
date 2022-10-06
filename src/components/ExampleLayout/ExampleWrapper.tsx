@@ -17,7 +17,7 @@ export default function ExampleWrapper({
                 <Paper elevation={5} sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Container
                         sx={{
-                            p: 3,
+                            p: 5,
                             display: 'flex',
                             flexDirection: 'row',
                             flexWrap: 'wrap',
