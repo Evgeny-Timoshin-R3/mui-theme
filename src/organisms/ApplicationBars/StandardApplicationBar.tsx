@@ -1,8 +1,8 @@
-import AppBarIconWrapper from '../../components/AppShell/ApplicationBar/AppBarIconWrapper';
-import AppBarSubLabelImage from '../../components/AppShell/ApplicationBar/AppBarSubLabelImage';
-import AppBarSubTitle from '../../components/AppShell/ApplicationBar/AppBarSubTitle';
-import AppBarTitle from '../../components/AppShell/ApplicationBar/AppBarTitle';
-import ApplicationBar from '../../components/AppShell/ApplicationBar/AppBar';
+import AppBar from '../../components/AppShell/AppBar/AppBar';
+import AppBarIconWrapper from '../../components/AppShell/AppBar/AppBarIconWrapper';
+import AppBarSubLabelImage from '../../components/AppShell/AppBar/AppBarSubLabelImage';
+import AppBarSubTitle from '../../components/AppShell/AppBar/AppBarSubTitle';
+import AppBarTitle from '../../components/AppShell/AppBar/AppBarTitle';
 import LogoR3Dark from '../../svgs/LogoR3Dark';
 import LogoR3Light from '../../svgs/LogoR3Light';
 import { useTheme } from '@mui/material';
@@ -10,7 +10,7 @@ import { useTheme } from '@mui/material';
 export default function StandardApplicationBar() {
     const theme = useTheme();
     return (
-        <ApplicationBar>
+        <AppBar>
             <AppBarIconWrapper>
                 {theme.palette.mode === 'dark' ? <LogoR3Light /> : <LogoR3Dark />}
             </AppBarIconWrapper>
@@ -19,6 +19,6 @@ export default function StandardApplicationBar() {
             <AppBarSubLabelImage
                 src={theme.palette.mode === 'light' ? './cordaBlack.png' : './cordaRed.png'}
             />
-        </ApplicationBar>
+        </AppBar>
     );
 }

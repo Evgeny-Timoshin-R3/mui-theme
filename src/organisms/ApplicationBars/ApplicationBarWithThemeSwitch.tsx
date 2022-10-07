@@ -1,10 +1,10 @@
 import { Box, IconButton } from '@mui/material';
 
-import AppBarIconWrapper from '../../components/AppShell/ApplicationBar/AppBarIconWrapper';
-import AppBarSubLabelImage from '../../components/AppShell/ApplicationBar/AppBarSubLabelImage';
-import AppBarSubTitle from '../../components/AppShell/ApplicationBar/AppBarSubTitle';
-import AppBarTitle from '../../components/AppShell/ApplicationBar/AppBarTitle';
-import ApplicationBar from '../../components/AppShell/ApplicationBar/AppBar';
+import AppBar from '../../components/AppShell/AppBar/AppBar';
+import AppBarIconWrapper from '../../components/AppShell/AppBar/AppBarIconWrapper';
+import AppBarSubLabelImage from '../../components/AppShell/AppBar/AppBarSubLabelImage';
+import AppBarSubTitle from '../../components/AppShell/AppBar/AppBarSubTitle';
+import AppBarTitle from '../../components/AppShell/AppBar/AppBarTitle';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import LogoR3Dark from '../../svgs/LogoR3Dark';
@@ -15,7 +15,7 @@ export default function ApplicationBarWithThemeSwitch() {
     const { mode, setThemeMode } = useThemeModeContext();
 
     return (
-        <ApplicationBar>
+        <AppBar>
             <AppBarIconWrapper>
                 {mode === 'dark' ? <LogoR3Light /> : <LogoR3Dark />}
             </AppBarIconWrapper>
@@ -33,6 +33,6 @@ export default function ApplicationBarWithThemeSwitch() {
             >
                 {mode === 'dark' ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
             </IconButton>
-        </ApplicationBar>
+        </AppBar>
     );
 }

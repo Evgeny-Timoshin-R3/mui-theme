@@ -1,11 +1,11 @@
 import { Box, IconButton, useTheme } from '@mui/material';
 
-import AppBarIconWrapper from '../../components/AppShell/ApplicationBar/AppBarIconWrapper';
-import AppBarNavigationLink from '../../components/AppShell/ApplicationBar/AppBarNavigationLink';
-import AppBarSubLabelImage from '../../components/AppShell/ApplicationBar/AppBarSubLabelImage';
-import AppBarSubTitle from '../../components/AppShell/ApplicationBar/AppBarSubTitle';
-import AppBarTitle from '../../components/AppShell/ApplicationBar/AppBarTitle';
-import ApplicationBar from '../../components/AppShell/ApplicationBar/AppBar';
+import AppBar from '../../components/AppShell/AppBar/AppBar';
+import AppBarIconWrapper from '../../components/AppShell/AppBar/AppBarIconWrapper';
+import AppBarNavigationLink from '../../components/AppShell/AppBar/AppBarNavigationLink';
+import AppBarSubLabelImage from '../../components/AppShell/AppBar/AppBarSubLabelImage';
+import AppBarSubTitle from '../../components/AppShell/AppBar/AppBarSubTitle';
+import AppBarTitle from '../../components/AppShell/AppBar/AppBarTitle';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import LogoR3Dark from '../../svgs/LogoR3Dark';
@@ -16,7 +16,7 @@ export default function ApplicationBarComplex() {
     const { setThemeMode } = useThemeModeContext();
     const theme = useTheme();
     return (
-        <ApplicationBar>
+        <AppBar>
             <AppBarIconWrapper>
                 {theme.palette.mode === 'dark' ? <LogoR3Light /> : <LogoR3Dark />}
             </AppBarIconWrapper>
@@ -42,6 +42,6 @@ export default function ApplicationBarComplex() {
             >
                 {theme.palette.mode === 'dark' ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
             </IconButton>
-        </ApplicationBar>
+        </AppBar>
     );
 }
