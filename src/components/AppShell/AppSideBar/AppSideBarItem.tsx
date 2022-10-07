@@ -5,22 +5,31 @@ import {
     ListItemButton,
     ListItemIcon,
     ListItemText,
+    SxProps,
+    Theme,
 } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { ReactNode, useRef, useState } from 'react';
 
 import AppSideBarTooltip from './AppSideBarTooltip';
+import setOpacity from '../../../mui_theme/utils/addAlpha';
 import { useSideBarContext } from '../../../contexts/SideBarContext';
 
 interface Props {
     text: string;
     onClick: () => void;
-    color?: string;
+    borderedIcon?: boolean;
     icon?: ReactNode;
     children?: ReactNode;
 }
 
-export default function AppSideBarItem({ text, onClick, icon, children, color }: Props) {
+export default function AppSideBarItem({
+    text,
+    onClick,
+    icon,
+    borderedIcon = false,
+    children,
+}: Props) {
     const { open } = useSideBarContext();
     const [expanded, setExpanded] = useState(false);
 
@@ -32,17 +41,31 @@ export default function AppSideBarItem({ text, onClick, icon, children, color }:
         setExpanded((prev) => !prev);
     };
 
+    const listItemAdditionalStyles: SxProps<Theme> = (theme) => {
+        if (!borderedIcon) return {};
+        return {
+            border: `1px solid ${setOpacity(theme.palette.primary.contrastText, 0.4)}`,
+            padding: 0.7,
+            borderRadius: 1,
+        };
+    };
+
     return (
         <>
             <AppSideBarTooltip title={open ? '' : text}>
                 <ListItem key={'something'} disablePadding sx={{ display: 'block', pl: 0.5 }}>
-                    <ListItemButton onClick={handleClick}>
+                    <ListItemButton
+                        sx={{ pl: borderedIcon ? 1.2 : undefined }}
+                        onClick={handleClick}
+                    >
                         <ListItemIcon
-                            sx={{
+                            sx={(theme) => ({
                                 minWidth: 0,
                                 mr: open ? 3 : 'auto',
+                                ml: 0,
                                 justifyContent: 'center',
-                            }}
+                                ...listItemAdditionalStyles(theme),
+                            })}
                         >
                             {icon && icon}
                         </ListItemIcon>
