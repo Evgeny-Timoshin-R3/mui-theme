@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import ApplicationBar from './ApplicationBar/ApplicationBar';
+import ApplicationBarComplex from '../../organisms/ApplicationBars/ApplicationBarComplex';
 import ApplicationDrawer from './ApplicationDrawer/ApplicationDrawer';
 import ApplicationMain from './ApplicationMain';
 import Box from '@mui/material/Box';
@@ -10,7 +10,8 @@ import { Toolbar } from '@mui/material';
 const AppShell: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
     return (
         <Box sx={{ display: 'flex' }}>
-            <StandardApplicationBar />
+            {/* <StandardApplicationBar /> */}
+            <ApplicationBarComplex />
             <ApplicationDrawer />
             <ApplicationMain>
                 <Toolbar />

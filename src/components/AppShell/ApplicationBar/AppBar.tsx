@@ -1,21 +1,15 @@
-import { AppBar, Box, Toolbar, useTheme } from '@mui/material';
+import { Box, AppBar as MUIAppBar, Toolbar } from '@mui/material';
 
-import IconWrapper from './IconWrapper';
-import NavigationLink from './NavigationLink';
 import { ReactNode } from 'react';
-import SubLabel from './SubLabel';
-import SubLabelImage from './SubLabelImage';
-import Title from './Label';
 
 interface Props {
     children?: ReactNode;
 }
 
-function ApplicationBar({ children }: Props) {
-    const theme = useTheme();
+const AppBar = ({ children }: Props) => {
     return (
         <Box>
-            <AppBar
+            <MUIAppBar
                 position="fixed"
                 sx={{
                     zIndex: (theme) => theme.zIndex.drawer + 1,
@@ -30,15 +24,9 @@ function ApplicationBar({ children }: Props) {
                 }}
             >
                 <Toolbar>{children}</Toolbar>
-            </AppBar>
+            </MUIAppBar>
         </Box>
     );
-}
+};
 
-ApplicationBar.Title = Title;
-ApplicationBar.IconWrapper = IconWrapper;
-ApplicationBar.SubLabel = SubLabel;
-ApplicationBar.SubLabelImage = SubLabelImage;
-ApplicationBar.NavigationLink = NavigationLink;
-
-export default ApplicationBar;
+export default AppBar;
