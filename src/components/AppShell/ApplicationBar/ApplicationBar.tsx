@@ -1,61 +1,18 @@
-import {
-    AppBar,
-    Badge,
-    Box,
-    IconButton,
-    Menu,
-    MenuItem,
-    SvgIcon,
-    Toolbar,
-    Typography,
-} from '@mui/material';
+import { AppBar, Box, Toolbar, useTheme } from '@mui/material';
 
-import { AccountCircle } from '@mui/icons-material';
-import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
-import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
-import LogoR3Dark from '../../../svgs/LogoR3Dark';
-import LogoR3Light from '../../../svgs/LogoR3Light';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { useState } from 'react';
-import { useThemeModeContext } from '../../../contexts/ThemeModeContext';
+import IconWrapper from './IconWrapper';
+import NavigationLink from './NavigationLink';
+import { ReactNode } from 'react';
+import SubLabel from './SubLabel';
+import SubLabelImage from './SubLabelImage';
+import Title from './Label';
 
-const ApplicationBar = () => {
-    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-    const isMenuOpen = Boolean(anchorEl);
+interface Props {
+    children?: ReactNode;
+}
 
-    const { mode, setThemeMode } = useThemeModeContext();
-
-    const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
-
-    const handleMenuClose = () => {
-        setAnchorEl(null);
-    };
-
-    const menuId = 'primary-search-account-menu';
-    const renderMenu = (
-        <Menu
-            anchorEl={anchorEl}
-            anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            id={menuId}
-            keepMounted
-            transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-            }}
-            open={isMenuOpen}
-            onClose={handleMenuClose}
-        >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-        </Menu>
-    );
-
+function ApplicationBar({ children }: Props) {
+    const theme = useTheme();
     return (
         <Box>
             <AppBar
@@ -72,106 +29,16 @@ const ApplicationBar = () => {
                             : theme.palette.grey[100],
                 }}
             >
-                <Toolbar>
-                    <SvgIcon
-                        sx={{ display: { xs: 'none', md: 'flex' }, mr: 1, width: 36, height: 36 }}
-                    >
-                        {mode === 'dark' ? <LogoR3Light /> : <LogoR3Dark />}
-                    </SvgIcon>
-                    <Typography
-                        variant="h6"
-                        noWrap
-                        component="a"
-                        href="/"
-                        sx={{
-                            ml: 3,
-                            fontWeight: 600,
-                            letterSpacing: '.1rem',
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        Theming Demo App
-                    </Typography>
-                    <Typography
-                        noWrap
-                        sx={{
-                            ml: 1,
-                            mt: 0.5,
-                            display: { xs: 'none', md: 'flex' },
-                            fontSize: 14,
-                            fontWeight: 500,
-                            color: 'inherit',
-                            textDecoration: 'none',
-                        }}
-                    >
-                        Powered By
-                    </Typography>
-                    {mode === 'light' ? (
-                        <img
-                            src="./cordaBlack.png"
-                            height={30}
-                            style={{ marginLeft: 3, marginBottom: 2 }}
-                        />
-                    ) : (
-                        <img
-                            src="./cordaRed.png"
-                            height={30}
-                            style={{ marginLeft: 3, marginBottom: 2 }}
-                        />
-                    )}
-
-                    {/* <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ 'aria-label': 'search' }}
-                        />
-                    </Search> */}
-                    <Box sx={{ flexGrow: 1 }} />
-                    <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="error">
-                                <MailIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton
-                            size="large"
-                            aria-label="show 17 new notifications"
-                            color="inherit"
-                        >
-                            <Badge badgeContent={17} color="error">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
-                        <IconButton
-                            size="large"
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >
-                            <AccountCircle />
-                        </IconButton>
-
-                        <IconButton
-                            onClick={() => {
-                                setThemeMode(mode === 'light' ? 'dark' : 'light');
-                            }}
-                            sx={{ marginLeft: 3 }}
-                        >
-                            {mode === 'dark' ? <LightModeRoundedIcon /> : <DarkModeRoundedIcon />}
-                        </IconButton>
-                    </Box>
-                </Toolbar>
+                <Toolbar>{children}</Toolbar>
             </AppBar>
-            {renderMenu}
         </Box>
     );
-};
+}
+
+ApplicationBar.Title = Title;
+ApplicationBar.IconWrapper = IconWrapper;
+ApplicationBar.SubLabel = SubLabel;
+ApplicationBar.SubLabelImage = SubLabelImage;
+ApplicationBar.NavigationLink = NavigationLink;
 
 export default ApplicationBar;

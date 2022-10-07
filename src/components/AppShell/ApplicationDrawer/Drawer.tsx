@@ -27,7 +27,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
 const themeColors = (theme: Theme): CSSObject => ({
     backgroundColor:
         theme.palette.mode === 'light'
-            ? theme.palette.primary.dark
+            ? theme.palette.primary.main
             : theme.palette.background.default,
     color: grey[50],
     '& .MuiSvgIcon-root': {
