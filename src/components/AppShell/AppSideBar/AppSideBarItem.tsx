@@ -44,7 +44,14 @@ export default function AppSideBarItem({
     const listItemAdditionalStyles: SxProps<Theme> = (theme) => {
         if (!borderedIcon) return {};
         return {
-            border: `1px solid ${setOpacity(theme.palette.primary.contrastText, 0.4)}`,
+            border: `1px solid ${setOpacity(
+                theme.palette.getContrastText(
+                    theme.palette.mode === 'light'
+                        ? theme.palette.primary.main
+                        : theme.palette.background.paper
+                ),
+                0.4
+            )}`,
             padding: 0.7,
             borderRadius: 1,
         };

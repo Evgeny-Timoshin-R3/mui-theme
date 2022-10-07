@@ -10,10 +10,10 @@ const cordaLightPaletteRed: PaletteOptions = {
     mode: 'light',
     background: { default: background.light, paper: paper.light },
     primary: {
-        main: brandedSecondaryRed[500],
+        main: brandedSecondaryRed[700],
     },
     secondary: {
-        main: brandedSecondaryRed[300],
+        main: brandedSecondaryRed[400],
     },
     text: { primary: text.dark },
     error: { main: ERROR_COLOR },
