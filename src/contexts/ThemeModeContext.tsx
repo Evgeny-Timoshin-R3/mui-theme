@@ -6,14 +6,14 @@ import createCtx from './createCtx';
 import createThemeVariant from '../mui_theme/createThemeVariant';
 import useLocalStorage from '../hooks/useLocalStorage';
 
-interface ThemeModeContextValues {
+interface ThemeModeContextValue {
     setThemeMode: (mode: PaletteMode) => void;
 
     mode: PaletteMode;
     theme: Theme;
 }
 
-export const [useThemeModeContext, Provider] = createCtx<ThemeModeContextValues>();
+export const [useThemeModeContext, Provider] = createCtx<ThemeModeContextValue>();
 
 interface ThemeModeContextProps {
     children?: React.ReactNode;

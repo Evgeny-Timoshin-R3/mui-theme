@@ -3,7 +3,7 @@ import './App.css';
 import { CssBaseline, Stack } from '@mui/material';
 
 import Alerts from './components/Alerts';
-import AppShell from './components/AppShell/AppShell';
+import AppShell from './organisms/AppShell/AppShell';
 import BasicButtonGroup from './components/ButtonGroup';
 import ButtonSizes from './components/ButtonsSizes';
 import Checkboxes from './components/Checkboxes';
@@ -53,9 +53,9 @@ function App() {
             <CssBaseline />
             <AppShell>
                 <Stack direction="column" spacing={8} marginBottom={10} marginTop={12}>
-                    {examples.map((example) => (
+                    {/* {examples.map((example) => (
                         <ExampleWrapper title={example[0] as string}>{example[1]}</ExampleWrapper>
-                    ))}
+                    ))} */}
                 </Stack>
             </AppShell>
         </ThemeProvider>
