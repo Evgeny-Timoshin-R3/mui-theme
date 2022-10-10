@@ -35,7 +35,7 @@ const columns: GridColDef[] = [
         width: 160,
         hideable: true,
         sortable: false,
-        resizable: true,
+
         renderCell: (params: GridRenderCellParams<any, any, any>): ReactNode => {
             if (!params.row.firstName) {
                 return <div>Oops! no first name</div>;

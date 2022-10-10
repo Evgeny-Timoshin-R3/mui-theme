@@ -5,86 +5,116 @@ import {
     ListItemButton,
     ListItemIcon,
     ListItemText,
+    SvgIcon,
     SxProps,
     Theme,
+    styled,
+    useTheme,
 } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { ReactNode, useRef, useState } from 'react';
+import { ReactNode, useId } from 'react';
 
 import AppSideBarTooltip from './AppSideBarTooltip';
-import setOpacity from '../../../mui_theme/utils/addAlpha';
 import { useSideBarContext } from '../../../contexts/SideBarContext';
+
+const expandedButtonMixin = (theme: Theme): SxProps<Theme> => {
+    return { marginLeft: '-3px', borderLeft: `3px ${theme.palette.secondary.light} solid` };
+};
+
+const selectedButtonMixin = (theme: Theme): SxProps<Theme> => {
+    return {
+        background: theme.palette.secondary.main,
+        '&:hover': {
+            background: theme.palette.secondary.light,
+        },
+    };
+};
 
 interface Props {
     text: string;
     onClick: () => void;
-    borderedIcon?: boolean;
+    level?: number;
     icon?: ReactNode;
     children?: ReactNode;
 }
 
-export default function AppSideBarItem({
-    text,
-    onClick,
-    icon,
-    borderedIcon = false,
-    children,
-}: Props) {
-    const { open } = useSideBarContext();
-    const [expanded, setExpanded] = useState(false);
-
-    const ref = useRef(null);
+export default function AppSideBarItem({ text, onClick, level = -1, icon, children }: Props) {
+    const theme = useTheme();
+    const { open, toggleExpanded, isExpanded, setSelected, isSelected } = useSideBarContext();
+    const id = useId();
 
     const handleClick = () => {
         onClick();
+        if (typeof children === 'undefined') {
+            setSelected(id);
+        }
         if (!open || typeof children === 'undefined') return;
-        setExpanded((prev) => !prev);
+        toggleExpanded(level, id);
     };
 
-    const listItemAdditionalStyles: SxProps<Theme> = (theme) => {
-        if (!borderedIcon) return {};
-        return {
-            border: `1px solid ${setOpacity(
-                theme.palette.getContrastText(
-                    theme.palette.mode === 'light'
-                        ? theme.palette.primary.main
-                        : theme.palette.background.paper
-                ),
-                0.4
-            )}`,
-            padding: 0.7,
-            borderRadius: 1,
-        };
-    };
+    const selected = isSelected(id);
+    const expanded = isExpanded(level, id);
+
+    const contentColor = selected
+        ? theme.palette.secondary.contrastText
+        : expanded
+        ? theme.palette.secondary.main
+        : theme.palette.secondary.light;
 
     return (
         <>
             <AppSideBarTooltip title={open ? '' : text}>
-                <ListItem key={'something'} disablePadding sx={{ display: 'block', pl: 0.5 }}>
+                <ListItem
+                    color="secondary"
+                    key={'something'}
+                    disablePadding
+                    sx={{
+                        display: 'block',
+                        pl: 0.5,
+                    }}
+                >
                     <ListItemButton
-                        sx={{ pl: borderedIcon ? 1.2 : undefined }}
+                        sx={(theme) => ({
+                            ...(expanded && {
+                                ...expandedButtonMixin(theme),
+                            }),
+                            ...(selected && {
+                                ...selectedButtonMixin(theme),
+                            }),
+                        })}
                         onClick={handleClick}
+                        color="secondary"
                     >
-                        <ListItemIcon
-                            sx={(theme) => ({
-                                minWidth: 0,
-                                mr: open ? 3 : 'auto',
-                                ml: 0,
-                                justifyContent: 'center',
-                                ...listItemAdditionalStyles(theme),
-                            })}
-                        >
-                            {icon && icon}
-                        </ListItemIcon>
+                        {icon && (
+                            <ListItemIcon
+                                sx={{
+                                    minWidth: 0,
+                                    mr: open ? 3 : 'auto',
+                                    ml: 0,
+                                    justifyContent: 'center',
+                                    color: contentColor,
+                                }}
+                            >
+                                {icon}
+                            </ListItemIcon>
+                        )}
                         <ListItemText
-                            ref={ref}
                             primary={text}
-                            sx={{ opacity: open ? 1 : 0, marginLeft: icon ? undefined : 3 }}
+                            sx={{
+                                opacity: open ? 1 : 0,
+                                marginLeft: icon ? undefined : 3,
+                                color: contentColor,
+                            }}
                         />
                         {children && (
-                            <div style={{ opacity: open ? 1 : 0 }}>
+                            <SvgIcon
+                                sx={{
+                                    color: contentColor,
+                                    opacity: open ? 1 : 0,
+                                }}
+                            >
                                 {expanded ? <ExpandLess /> : <ExpandMore />}
-                            </div>
+                            </SvgIcon>
                         )}
                     </ListItemButton>
                 </ListItem>

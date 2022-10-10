@@ -21,7 +21,6 @@ declare module '@mui/material/styles' {
 }
 
 const theme = createTheme({
-    //these are default breakpoint, "overriding" them to expose and show example of how they can be modified
     breakpoints: {
         keys: ['xs', 'sm', 'md', 'lg', 'xl'],
         values: {
@@ -35,7 +34,6 @@ const theme = createTheme({
     typography: {
         fontFamily: ['Poppins'].join(','),
     },
-    //overriding some components to match theme of our GUI toolkit
     components: {
         MuiAlert: {
             styleOverrides: {
@@ -60,6 +58,16 @@ const theme = createTheme({
         },
         MuiButtonBase: {
             defaultProps: { disableRipple: true },
+            styleOverrides: {
+                root: ({ theme }) => ({
+                    // '&:hover': {
+                    //     background: theme.palette.secondary.light,
+                    //     color:
+                    //         theme.palette.getContrastText(theme.palette.secondary.light) +
+                    //         '!important',
+                    // },
+                }),
+            },
         },
         MuiButton: {
             styleOverrides: {
@@ -116,6 +124,15 @@ const theme = createTheme({
         MuiInputLabel: {
             styleOverrides: { root: { paddingLeft: 8 } },
         },
+        // MuiDrawer: {
+        //     styleOverrides: {
+        //         root: (theme) => ({
+        //             '&.MuiListItemButton-root': {
+        //                 color: 'red',
+        //             },
+        //         }),
+        //     },
+        // },
     },
 
     //Overall borderRadius override

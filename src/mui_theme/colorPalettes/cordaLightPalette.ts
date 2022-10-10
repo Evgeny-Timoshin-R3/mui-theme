@@ -14,7 +14,8 @@ const cordaLightPalette: PaletteOptions = {
         main: brandedBlue[900],
     },
     secondary: {
-        main: brandedPurple[400],
+        main: brandedPurple[300],
+        light: brandedPurple[200],
     },
     text: { primary: text.dark },
     error: { main: ERROR_COLOR },

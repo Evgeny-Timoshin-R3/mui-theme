@@ -53,9 +53,9 @@ function App() {
             <CssBaseline />
             <AppShell>
                 <Stack direction="column" spacing={8} marginBottom={10} marginTop={12}>
-                    {/* {examples.map((example) => (
+                    {examples.map((example) => (
                         <ExampleWrapper title={example[0] as string}>{example[1]}</ExampleWrapper>
-                    ))} */}
+                    ))}
                 </Stack>
             </AppShell>
         </ThemeProvider>

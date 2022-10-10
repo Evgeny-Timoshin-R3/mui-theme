@@ -6,7 +6,7 @@ import { grey } from '@mui/material/colors';
 const openedMixin = (theme: Theme): CSSObject => ({
     width: 240,
     transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
+        easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
     }),
     overflowX: 'hidden',
@@ -14,7 +14,7 @@ const openedMixin = (theme: Theme): CSSObject => ({
 
 const closedMixin = (theme: Theme): CSSObject => ({
     transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
+        easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.leavingScreen,
     }),
     overflowX: 'hidden',
@@ -30,9 +30,6 @@ const themeColors = (theme: Theme): CSSObject => ({
             ? theme.palette.primary.main
             : theme.palette.background.default,
     color: grey[50],
-    '& .MuiSvgIcon-root': {
-        color: grey[50],
-    },
 });
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(

@@ -13,7 +13,7 @@ const cordaDarkPaletteRed: PaletteOptions = {
         main: brandedSecondaryRed[400],
     },
     secondary: {
-        main: brandedSecondaryRed[100],
+        main: brandedSecondaryRed[200],
     },
     text: { primary: text.light },
     error: { main: ERROR_COLOR },
