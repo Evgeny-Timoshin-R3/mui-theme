@@ -24,6 +24,8 @@ export default function ReactRouterIntegrationSideBar() {
                 onClick={() => {
                     navigate(AppRoutes.HOME);
                 }}
+                // Without the link prop the highlighting on page reload will break
+                to={AppRoutes.HOME}
             />
             <AppSideBarItem
                 text="Inbox"
