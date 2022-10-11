@@ -34,7 +34,7 @@ interface Props {
     icon?: ReactNode;
     level?: number;
     children?: ReactNode;
-    onClick: () => void;
+    onClick?: () => void;
     toggleExpanded?: (level: number, id: string) => void;
     isExpanded?: (level: number, id: string) => boolean;
     component?: any;
@@ -73,7 +73,10 @@ export default function AppSideBarItem({
     }, [isExpanded, level, id]);
 
     const handleClick = () => {
-        onClick();
+        if (onClick) {
+            onClick();
+        }
+
         if (!isExpandable) {
             setSelected(id);
         }

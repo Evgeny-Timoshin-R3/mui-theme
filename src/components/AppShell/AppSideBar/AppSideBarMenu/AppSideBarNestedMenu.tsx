@@ -9,7 +9,7 @@ interface Props {
     multipleActiveItems?: boolean;
 }
 
-export default function AppSideBarMenu({ children, multipleActiveItems = true }: Props) {
+export default function AppSideBarNestedMenu({ children, multipleActiveItems = true }: Props) {
     const { isExpanded, toggleExpanded, level } = useNestedList(multipleActiveItems);
 
     const renderChildren = (childrenRoot: ReactElement, level: number): ReactNode => {
