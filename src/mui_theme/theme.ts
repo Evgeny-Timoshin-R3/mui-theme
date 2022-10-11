@@ -1,10 +1,10 @@
 import type {} from '@mui/x-date-pickers/themeAugmentation';
 
 import { ERROR_COLOR, INFO_COLOR, SUCCESS_COLOR, WARNING_COLOR } from './colors/utilityColors';
+import { grey, orange } from '@mui/material/colors';
 
 import cordaLightPalette from './colorPalettes/cordaLightPalette';
 import { createTheme } from '@mui/material';
-import { orange } from '@mui/material/colors';
 
 declare module '@mui/material/styles' {
     interface Theme {
@@ -56,18 +56,31 @@ const theme = createTheme({
                 },
             },
         },
-        MuiButtonBase: {
-            defaultProps: { disableRipple: false },
+        MuiAppBar: {
+            defaultProps: { position: 'fixed' },
             styleOverrides: {
                 root: ({ theme }) => ({
-                    // '&:hover': {
-                    //     background: theme.palette.secondary.light,
-                    //     color:
-                    //         theme.palette.getContrastText(theme.palette.secondary.light) +
-                    //         '!important',
-                    // },
+                    borderBottomRightRadius: theme.shape.borderRadius,
+                    boxShadow:
+                        theme.palette.mode === 'light'
+                            ? '0px 0px 12px 3px rgba(0,0,0,0.40)'
+                            : '0px 0px 12px 3px rgba(0,0,0,0.20)',
+                    left: 0,
+                    maxWidth: 1920,
+                    zIndex: theme.zIndex.drawer + 1,
+                    backgroundColor:
+                        theme.palette.mode === 'light'
+                            ? theme.palette.grey.A200
+                            : theme.palette.background.default,
+                    color:
+                        theme.palette.mode === 'light'
+                            ? theme.palette.grey[800]
+                            : theme.palette.grey[100],
                 }),
             },
+        },
+        MuiButtonBase: {
+            defaultProps: { disableRipple: false },
         },
         MuiButton: {
             styleOverrides: {
@@ -83,6 +96,40 @@ const theme = createTheme({
                     },
                 },
             },
+        },
+        MuiDatePicker: {
+            styleOverrides: {
+                root: { '& input': { color: 'red' } },
+            },
+        },
+        MuiDrawer: {
+            styleOverrides: {
+                root: ({ theme }) => ({
+                    '& .MuiDrawer-paper': {
+                        borderBottomRightRadius: theme.shape.borderRadius,
+                        borderColor: theme.palette.mode === 'light' ? undefined : undefined,
+                        boxShadow:
+                            theme.palette.mode === 'light'
+                                ? '0px 0px 12px 3px rgba(0,0,0,0.40)'
+                                : '0px 0px 12px 3px rgba(0,0,0,0.20)',
+                        backgroundColor:
+                            theme.palette.mode === 'light'
+                                ? theme.palette.primary.main
+                                : theme.palette.background.default,
+                        color: grey[50],
+                    },
+                }),
+            },
+        },
+        MuiInputBase: {
+            styleOverrides: {
+                root: {
+                    paddingLeft: 12,
+                },
+            },
+        },
+        MuiInputLabel: {
+            styleOverrides: { root: { paddingLeft: 8 } },
         },
         MuiOutlinedInput: {
             styleOverrides: {
@@ -109,34 +156,9 @@ const theme = createTheme({
                 },
             },
         },
-        MuiDatePicker: {
-            styleOverrides: {
-                root: { '& input': { color: 'red' } },
-            },
-        },
-        MuiInputBase: {
-            styleOverrides: {
-                root: {
-                    paddingLeft: 12,
-                },
-            },
-        },
-        MuiInputLabel: {
-            styleOverrides: { root: { paddingLeft: 8 } },
-        },
-        // MuiDrawer: {
-        //     styleOverrides: {
-        //         root: (theme) => ({
-        //             '&.MuiListItemButton-root': {
-        //                 color: 'red',
-        //             },
-        //         }),
-        //     },
-        // },
     },
 
-    //Overall borderRadius override
-    shape: { borderRadius: 12 },
+    shape: { borderRadius: 16 },
     palette: cordaLightPalette,
     status: {
         danger: orange[500],

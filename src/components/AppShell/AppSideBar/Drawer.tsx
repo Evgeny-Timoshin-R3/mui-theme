@@ -24,14 +24,6 @@ const closedMixin = (theme: Theme): CSSObject => ({
     },
 });
 
-const themeColors = (theme: Theme): CSSObject => ({
-    backgroundColor:
-        theme.palette.mode === 'light'
-            ? theme.palette.primary.main
-            : theme.palette.background.default,
-    color: grey[50],
-});
-
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
     ({ theme, open }) => ({
         flexShrink: 0,
@@ -39,11 +31,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         boxSizing: 'border-box',
         ...(open && {
             ...openedMixin(theme),
-            '& .MuiDrawer-paper': { ...openedMixin(theme), ...themeColors(theme) },
+            '& .MuiDrawer-paper': { ...openedMixin(theme) },
         }),
         ...(!open && {
             ...closedMixin(theme),
-            '& .MuiDrawer-paper': { ...closedMixin(theme), ...themeColors(theme) },
+            '& .MuiDrawer-paper': { ...closedMixin(theme) },
         }),
     })
 );
