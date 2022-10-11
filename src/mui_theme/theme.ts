@@ -5,6 +5,7 @@ import { grey, orange } from '@mui/material/colors';
 
 import cordaLightPalette from './colorPalettes/cordaLightPalette';
 import { createTheme } from '@mui/material';
+import setOpacity from './utils/addAlpha';
 
 declare module '@mui/material/styles' {
     interface Theme {
@@ -81,6 +82,12 @@ const theme = createTheme({
         },
         MuiButtonBase: {
             defaultProps: { disableRipple: false },
+            styleOverrides: {
+                root: ({ theme }) => ({
+                    transition:
+                        'color ease-in-out 250ms, background-color ease-in-out 250ms !important',
+                }),
+            },
         },
         MuiButton: {
             styleOverrides: {
@@ -97,6 +104,13 @@ const theme = createTheme({
                 },
             },
         },
+        MuiListItemButton: {
+            styleOverrides: {
+                root: ({ theme }) => ({
+                    '&:hover': { backgroundColor: setOpacity(theme.palette.primary.light, 0.3) },
+                }),
+            },
+        },
         MuiDatePicker: {
             styleOverrides: {
                 root: { '& input': { color: 'red' } },
@@ -107,7 +121,7 @@ const theme = createTheme({
                 root: ({ theme }) => ({
                     '& .MuiDrawer-paper': {
                         borderBottomRightRadius: theme.shape.borderRadius,
-                        borderColor: theme.palette.mode === 'light' ? undefined : undefined,
+                        borderColor: theme.palette.mode === 'light' ? undefined : 'rgba(0,0,0,0.2)',
                         boxShadow:
                             theme.palette.mode === 'light'
                                 ? '0px 0px 12px 3px rgba(0,0,0,0.40)'
