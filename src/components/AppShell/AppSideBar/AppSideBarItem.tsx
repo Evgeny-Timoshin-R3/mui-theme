@@ -11,7 +11,7 @@ import {
     useTheme,
 } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { ReactNode, useId, useMemo } from 'react';
+import { ReactNode, useEffect, useId, useMemo } from 'react';
 
 import AppSideBarTooltip from './AppSideBarTooltip';
 import { useSideBarContext } from '../../../contexts/SideBarContext';
@@ -97,6 +97,12 @@ export default function AppSideBarItem({
         : expanded
         ? theme.palette.secondary.main
         : theme.palette.secondary.light;
+
+    useEffect(() => {
+        if (window.location.pathname === to) {
+            setSelected(id);
+        }
+    }, [to]);
 
     return (
         <>

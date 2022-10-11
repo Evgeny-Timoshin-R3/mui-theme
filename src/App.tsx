@@ -2,9 +2,9 @@ import './App.css';
 
 import { CssBaseline, Stack } from '@mui/material';
 
-import Alerts from './components/Alerts';
-import AppShell from './organisms/AppShell/AppShell';
-import AppShellWithReactRouter from './organisms/AppShell/AppShellWithReactRouter';
+import Alerts from './components/Examples/Alerts';
+import ExampleShell from './organisms/AppShell/ExampleShell';
+import ExampleShellWithReactRouter from './organisms/AppShell/ExampleShellWithReactRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import { useThemeModeContext } from './contexts/ThemeModeContext';
 
@@ -13,8 +13,8 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            {/* <AppShell /> */}
-            <AppShellWithReactRouter />
+            {/* <ExampleShell /> */}
+            <ExampleShellWithReactRouter />
         </ThemeProvider>
     );
 }

@@ -1,8 +1,8 @@
 import { Children, ReactElement, ReactNode, isValidElement } from 'react';
 
-import AppSideBarItem from '../AppSideBarItem';
-import NestedListContextProvider from '../../../../contexts/NestedListContext';
-import useNestedList from '../../../../hooks/useNestedList';
+import AppSideBarItem from './AppSideBarItem';
+import NestedListContextProvider from '../../../contexts/NestedListContext';
+import useNestedList from '../../../hooks/useNestedList';
 
 interface Props {
     children?: ReactNode;

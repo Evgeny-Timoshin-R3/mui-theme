@@ -1,6 +1,6 @@
 import AppSideBar from '../../../components/AppShell/AppSideBar/AppSideBar';
 import AppSideBarItem from '../../../components/AppShell/AppSideBar/AppSideBarItem';
-import AppSideBarNestedMenu from '../../../components/AppShell/AppSideBar/AppSideBarMenu/AppSideBarNestedMenu';
+import AppSideBarNestedMenu from '../../../components/AppShell/AppSideBar/AppSideBarNestedMenu';
 import { Box } from '@mui/material';
 import HouseRoundedIcon from '@mui/icons-material/HouseRounded';
 import InboxIcon from '@mui/icons-material/MoveToInbox';

@@ -11,6 +11,8 @@ const AppBar = ({ children }: Props) => {
         <MUIAppBar
             position="fixed"
             sx={{
+                left: 0,
+                maxWidth: 1920,
                 zIndex: (theme) => theme.zIndex.drawer + 1,
                 backgroundColor: (theme) =>
                     theme.palette.mode === 'light'
