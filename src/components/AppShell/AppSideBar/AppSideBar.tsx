@@ -1,7 +1,6 @@
 import { Box, ClickAwayListener, Toolbar } from '@mui/material';
-import { Children, ReactElement, ReactNode, isValidElement, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 
-import AppSideBarItem from './AppSideBarItem';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Divider from '@mui/material/Divider';
@@ -17,19 +16,29 @@ interface Props {
     closeOnClickAway?: boolean;
     multipleActiveItems?: boolean;
     toggleable?: boolean;
+    highlightSelected?: boolean;
+    closeOnSelected?: boolean;
 }
 
 export default function AppSideBar({
     children,
-    multipleActiveItems = true,
     closeOnClickAway = false,
     toggleable = true,
+    highlightSelected = false,
+    closeOnSelected = false,
 }: Props) {
     const theme = useTheme();
 
     const [open, setOpen] = useState<boolean>(!toggleable ? true : false);
     const [selected, setSelected] = useState<string>('');
-    const [expanded, setExpanded] = useState<Map<number, string[]>>(new Map());
+
+    const setSelectedHandler = (id: string) => {
+        if (!highlightSelected) return;
+        if (closeOnSelected) {
+            setOpen(false);
+        }
+        setSelected(id);
+    };
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -47,53 +56,6 @@ export default function AppSideBar({
 
     const isSelected = (id: string) => {
         return selected === id;
-    };
-
-    const toggleExpanded = (level: number, id: string) => {
-        const tempExpanded = new Map(expanded);
-        const expandedList = tempExpanded.get(level);
-        if (!expandedList) {
-            tempExpanded.set(level, [id]);
-            setExpanded(tempExpanded);
-            return;
-        }
-
-        if (expandedList.includes(id)) {
-            tempExpanded.set(
-                level,
-                expandedList.filter((e) => e !== id)
-            );
-        } else {
-            if (!multipleActiveItems) {
-                tempExpanded.set(level, [id]);
-            } else {
-                tempExpanded.set(level, [...expandedList, id]);
-            }
-        }
-        setExpanded(tempExpanded);
-    };
-
-    const isExpanded = (level: number, id: string): boolean => {
-        const expandedList = expanded.get(level);
-        if (!expandedList) return false;
-        return expandedList.includes(id);
-    };
-
-    const level = -1;
-
-    const renderChildren = (childrenRoot: ReactElement, level: number): ReactNode => {
-        level++;
-        return (
-            <AppSideBarItem {...childrenRoot.props} level={level}>
-                {childrenRoot.props &&
-                    childrenRoot.props.children &&
-                    Children.map(childrenRoot.props.children, (child, i) => {
-                        if (isValidElement(child)) {
-                            return renderChildren(child, level);
-                        }
-                    })}
-            </AppSideBarItem>
-        );
     };
 
     const iconColor =
@@ -143,13 +105,9 @@ export default function AppSideBar({
                 {!toggleable && <Box sx={{ mt: 2 }} />}
 
                 <SideBarContextProvider
-                    value={{ open, toggleExpanded, isExpanded, setSelected, isSelected }}
+                    value={{ open, setOpen, isSelected, setSelected: setSelectedHandler }}
                 >
-                    {Children.map(children, (child, i) => {
-                        if (isValidElement(child)) {
-                            return renderChildren(child, level);
-                        }
-                    })}
+                    {children}
                 </SideBarContextProvider>
             </Drawer>
         </ClickAwayListener>

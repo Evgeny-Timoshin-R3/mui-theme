@@ -57,7 +57,7 @@ const theme = createTheme({
             },
         },
         MuiButtonBase: {
-            defaultProps: { disableRipple: true },
+            defaultProps: { disableRipple: false },
             styleOverrides: {
                 root: ({ theme }) => ({
                     // '&:hover': {

@@ -2,8 +2,7 @@ import createCtx from './createCtx';
 
 interface SideBarContextValue {
     open: boolean;
-    toggleExpanded: (level: number, id: string) => void;
-    isExpanded: (level: number, id: string) => boolean;
+    setOpen: (open: boolean) => void;
     setSelected: (id: string) => void;
     isSelected: (id: string) => boolean;
 }

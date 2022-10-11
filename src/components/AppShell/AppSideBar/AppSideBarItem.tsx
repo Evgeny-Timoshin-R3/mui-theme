@@ -8,11 +8,10 @@ import {
     SvgIcon,
     SxProps,
     Theme,
-    styled,
     useTheme,
 } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { ReactNode, useId } from 'react';
+import { ReactNode, useId, useMemo } from 'react';
 
 import AppSideBarTooltip from './AppSideBarTooltip';
 import { useSideBarContext } from '../../../contexts/SideBarContext';
@@ -32,28 +31,63 @@ const selectedButtonMixin = (theme: Theme): SxProps<Theme> => {
 
 interface Props {
     text: string;
-    onClick: () => void;
-    level?: number;
     icon?: ReactNode;
+    level?: number;
     children?: ReactNode;
+    onClick: () => void;
+    toggleExpanded?: (level: number, id: string) => void;
+    isExpanded?: (level: number, id: string) => boolean;
+    component?: any;
+    to?: string;
 }
 
-export default function AppSideBarItem({ text, onClick, level = -1, icon, children }: Props) {
+export default function AppSideBarItem({
+    text,
+    onClick,
+    level = -1,
+    icon,
+    children,
+    toggleExpanded,
+    isExpanded,
+    component,
+    to,
+}: Props) {
     const theme = useTheme();
-    const { open, toggleExpanded, isExpanded, setSelected, isSelected } = useSideBarContext();
+    const {
+        open: isSideBarOpen,
+        setOpen: setOpenSideBar,
+        isSelected,
+        setSelected,
+    } = useSideBarContext();
     const id = useId();
+
+    const isExpandable = useMemo(() => {
+        return typeof children !== 'undefined';
+    }, [children]);
+
+    const expanded = useMemo(() => {
+        if (isExpanded) {
+            return isExpanded(level, id);
+        }
+        return false;
+    }, [isExpanded, level, id]);
 
     const handleClick = () => {
         onClick();
-        if (typeof children === 'undefined') {
+        if (!isExpandable) {
             setSelected(id);
         }
-        if (!open || typeof children === 'undefined') return;
-        toggleExpanded(level, id);
+
+        if (isExpandable && !isSideBarOpen) {
+            setOpenSideBar(true);
+        }
+
+        if (isExpandable && toggleExpanded) {
+            toggleExpanded(level, id);
+        }
     };
 
     const selected = isSelected(id);
-    const expanded = isExpanded(level, id);
 
     const contentColor = selected
         ? theme.palette.secondary.contrastText
@@ -63,8 +97,10 @@ export default function AppSideBarItem({ text, onClick, level = -1, icon, childr
 
     return (
         <>
-            <AppSideBarTooltip title={open ? '' : text}>
+            <AppSideBarTooltip title={isSideBarOpen ? '' : text}>
                 <ListItem
+                    component={component}
+                    to={to}
                     color="secondary"
                     key={'something'}
                     disablePadding
@@ -75,9 +111,10 @@ export default function AppSideBarItem({ text, onClick, level = -1, icon, childr
                 >
                     <ListItemButton
                         sx={(theme) => ({
-                            ...(expanded && {
-                                ...expandedButtonMixin(theme),
-                            }),
+                            ...(expanded &&
+                                isSideBarOpen && {
+                                    ...expandedButtonMixin(theme),
+                                }),
                             ...(selected && {
                                 ...selectedButtonMixin(theme),
                             }),
@@ -89,7 +126,7 @@ export default function AppSideBarItem({ text, onClick, level = -1, icon, childr
                             <ListItemIcon
                                 sx={{
                                     minWidth: 0,
-                                    mr: open ? 3 : 'auto',
+                                    mr: isSideBarOpen ? 3 : 'auto',
                                     ml: 0,
                                     justifyContent: 'center',
                                     color: contentColor,
@@ -101,16 +138,16 @@ export default function AppSideBarItem({ text, onClick, level = -1, icon, childr
                         <ListItemText
                             primary={text}
                             sx={{
-                                opacity: open ? 1 : 0,
-                                marginLeft: icon ? undefined : 3,
+                                opacity: isSideBarOpen ? 1 : 0,
+                                marginLeft: !icon ? 6 : undefined,
                                 color: contentColor,
                             }}
                         />
-                        {children && (
+                        {isExpandable && (
                             <SvgIcon
                                 sx={{
                                     color: contentColor,
-                                    opacity: open ? 1 : 0,
+                                    opacity: isSideBarOpen ? 1 : 0,
                                 }}
                             >
                                 {expanded ? <ExpandLess /> : <ExpandMore />}
@@ -123,7 +160,7 @@ export default function AppSideBarItem({ text, onClick, level = -1, icon, childr
                 in={expanded}
                 timeout={250}
                 unmountOnExit
-                sx={{ display: children && open ? 'block' : 'none' }}
+                sx={{ display: isExpandable && isSideBarOpen ? 'block' : 'none' }}
             >
                 <List component="div" disablePadding sx={{ pl: 1.5 }}>
                     {children}
