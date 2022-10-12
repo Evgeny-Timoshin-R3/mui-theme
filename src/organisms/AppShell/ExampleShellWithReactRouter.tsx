@@ -6,7 +6,7 @@ import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-route
 
 import AppMain from '../../components/AppShell/AppMain';
 import AppWrapper from '../../components/AppShell/AppWrapper';
-import ApplicationBarComplex from '../ApplicationBars/ApplicationBarComplex';
+import ApplicationBarWithReactRouter from '../ApplicationBars/ApplicationBarWithReactRouter';
 import { EXAMPLES } from '../../components/Examples/Examples';
 import ExampleWrapper from '../../components/ExampleLayout/ExampleWrapper';
 import ReactRouterIntegrationSideBar from './AppSideBars/ReactRouterIntegration';
@@ -19,9 +19,9 @@ function RouterBreadCrumbs() {
 const ExampleShellWithReactRouter: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
     return (
         <AppWrapper>
-            <ApplicationBarComplex />
-
             <Router>
+                <ApplicationBarWithReactRouter />
+
                 <ReactRouterIntegrationSideBar />
                 <AppMain>
                     <RouterBreadCrumbs />

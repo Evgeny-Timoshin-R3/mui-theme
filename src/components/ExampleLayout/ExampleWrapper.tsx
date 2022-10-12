@@ -13,7 +13,7 @@ export default function ExampleWrapper({
     return (
         <>
             {title && <Typography variant="h4">{title}</Typography>}
-            <Fade in={true} timeout={2000}>
+            <Fade in={true} timeout={800}>
                 <Paper elevation={5} sx={{ display: 'flex', flexDirection: 'column' }}>
                     <Container
                         sx={{
