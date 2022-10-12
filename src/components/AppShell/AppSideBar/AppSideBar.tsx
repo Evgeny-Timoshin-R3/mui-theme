@@ -1,10 +1,9 @@
 import { Box, ClickAwayListener, Toolbar } from '@mui/material';
-import { ReactNode, useMemo, useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 import AppDrawer from './AppDrawer/AppDrawer';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import Divider from '@mui/material/Divider';
 import DrawerHeader from './AppDrawer/DrawerHeader';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -28,7 +27,6 @@ export default function AppSideBar({
     closeOnSelected = false,
 }: Props) {
     const theme = useTheme();
-
     const [open, setOpen] = useState<boolean>(!toggleable ? true : false);
     const [selected, setSelected] = useState<string>('');
 
@@ -98,7 +96,6 @@ export default function AppSideBar({
                                 )}
                             </IconButton>
                         </DrawerHeader>
-                        <Divider />
                     </>
                 )}
 

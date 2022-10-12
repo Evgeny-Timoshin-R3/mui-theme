@@ -103,13 +103,6 @@ const theme = createTheme({
                 },
             },
         },
-        MuiListItemButton: {
-            styleOverrides: {
-                root: ({ theme }) => ({
-                    '&:hover': { backgroundColor: setOpacity(theme.palette.primary.light, 0.3) },
-                }),
-            },
-        },
         MuiDatePicker: {
             styleOverrides: {
                 root: { '& input': { color: 'red' } },
@@ -130,6 +123,13 @@ const theme = createTheme({
                                 ? theme.palette.primary.main
                                 : theme.palette.background.default,
                         color: grey[50],
+                    },
+                    '& .MuiListItemButton-root': {
+                        borderTopLeftRadius: theme.shape.borderRadius,
+                        borderBottomLeftRadius: theme.shape.borderRadius,
+                        '&:hover': {
+                            backgroundColor: setOpacity(theme.palette.primary.light, 0.3),
+                        },
                     },
                 }),
             },
