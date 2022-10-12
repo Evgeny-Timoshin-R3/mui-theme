@@ -1,15 +1,8 @@
-import { PaletteOptions, createTheme } from '@mui/material';
+import { PaletteOptions, Theme, createTheme } from '@mui/material';
 
-import MuiTheme from './theme';
-import ThemeGradients from './themeGradients';
-
-const activeTheme = MuiTheme;
-//const activeTheme = ThemeGradients;
-
-export default function createThemeVariant(palette: PaletteOptions) {
-    const theme = createTheme({
-        ...activeTheme,
+export default function createThemeVariant(theme: Theme, palette: PaletteOptions) {
+    return createTheme({
+        ...theme,
         palette: palette,
     });
-    return theme;
 }

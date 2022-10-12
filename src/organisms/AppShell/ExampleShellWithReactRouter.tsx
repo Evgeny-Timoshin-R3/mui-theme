@@ -1,12 +1,14 @@
 import * as AppRoutes from '../constants/routes';
 import * as React from 'react';
 
-import { Box, Typography } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 
 import AppMain from '../../components/AppShell/AppMain';
 import AppWrapper from '../../components/AppShell/AppWrapper';
 import ApplicationBarComplex from '../ApplicationBars/ApplicationBarComplex';
+import { EXAMPLES } from '../../components/Examples/Examples';
+import ExampleWrapper from '../../components/ExampleLayout/ExampleWrapper';
 import ReactRouterIntegrationSideBar from './AppSideBars/ReactRouterIntegration';
 
 function RouterBreadCrumbs() {
@@ -24,6 +26,23 @@ const ExampleShellWithReactRouter: React.FC<{ children?: React.ReactNode }> = ({
                 <AppMain>
                     <RouterBreadCrumbs />
                     <Routes>
+                        <Route
+                            path={AppRoutes.EXAMPLES}
+                            element={
+                                <Stack
+                                    direction="column"
+                                    spacing={8}
+                                    marginBottom={10}
+                                    marginTop={2}
+                                >
+                                    {EXAMPLES.map((example) => (
+                                        <ExampleWrapper title={example[0] as string}>
+                                            {example[1]}
+                                        </ExampleWrapper>
+                                    ))}
+                                </Stack>
+                            }
+                        />
                         <Route
                             path={AppRoutes.HOME}
                             element={<Box sx={{ flexGrow: 1 }}>HOME COMPONENT RENDERED</Box>}

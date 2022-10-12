@@ -10,10 +10,10 @@ import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
 import LogoR3Dark from '../../svgs/LogoR3Dark';
 import LogoR3Light from '../../svgs/LogoR3Light';
-import { useThemeModeContext } from '../../contexts/ThemeModeContext';
+import { useCustomThemeContext } from '../../contexts/ThemeModeContext';
 
 export default function ApplicationBarComplex() {
-    const { setThemeMode } = useThemeModeContext();
+    const { setThemeMode } = useCustomThemeContext();
     const theme = useTheme();
     return (
         <AppBar>

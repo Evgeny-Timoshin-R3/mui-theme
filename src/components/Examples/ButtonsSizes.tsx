@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import Button from '@mui/material/Button';
+import { Stack } from '@mui/material';
 
 export default function ButtonSizes() {
     return (
-        <>
+        <Stack spacing={2}>
             <div>
                 <Button size="small">Small</Button>
                 <Button size="medium">Medium</Button>
@@ -42,6 +43,6 @@ export default function ButtonSizes() {
                     Disabled
                 </Button>
             </div>
-        </>
+        </Stack>
     );
 }

@@ -22,6 +22,7 @@ export default function ExampleWrapper({
                             flexDirection: 'row',
                             flexWrap: 'wrap',
                             gap: 4,
+                            width: '100%',
                         }}
                     >
                         {children}

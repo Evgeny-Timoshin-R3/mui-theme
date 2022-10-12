@@ -6,6 +6,7 @@ import AppSideBar from '../../../components/AppShell/AppSideBar/AppSideBar';
 import AppSideBarItem from '../../../components/AppShell/AppSideBar/AppSideBarItem';
 import BalanceRoundedIcon from '@mui/icons-material/BalanceRounded';
 import { Box } from '@mui/material';
+import BrushRoundedIcon from '@mui/icons-material/BrushRounded';
 import HouseRoundedIcon from '@mui/icons-material/HouseRounded';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MoveToInboxRoundedIcon from '@mui/icons-material/MoveToInboxRounded';
@@ -17,6 +18,14 @@ export default function ReactRouterIntegrationSideBar() {
 
     return (
         <AppSideBar closeOnClickAway highlightSelected>
+            <AppSideBarItem
+                text="Examples"
+                icon={<BrushRoundedIcon />}
+                // Using onclick to navigate instead of link component as below
+                component={Link}
+                // Without the link prop the highlighting on page reload will break
+                to={AppRoutes.EXAMPLES}
+            />
             <AppSideBarItem
                 text="Home"
                 icon={<HouseRoundedIcon />}

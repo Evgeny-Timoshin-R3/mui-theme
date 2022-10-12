@@ -25,7 +25,7 @@ const ExampleShell: React.FC<{ children?: React.ReactNode }> = ({ children }) =>
             {/* App Main wrapper for the body of application */}
             <AppMain>
                 <Stack direction="column" spacing={8} marginBottom={10} marginTop={2}>
-                    {[EXAMPLES[0]].map((example) => (
+                    {EXAMPLES.map((example) => (
                         <ExampleWrapper title={example[0] as string}>{example[1]}</ExampleWrapper>
                     ))}
                 </Stack>

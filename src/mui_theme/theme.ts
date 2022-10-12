@@ -93,7 +93,6 @@ const theme = createTheme({
             styleOverrides: {
                 root: {
                     borderRadius: 28,
-                    borderWidth: 2,
                     padding: '12px 24px 12px 24px',
                     gap: 8,
                     fontWeight: 600,
@@ -169,6 +168,32 @@ const theme = createTheme({
                     root: { borderColor: 'white', '& legend': { padding: 2 + '!important' } },
                 },
             },
+        },
+        MuiCssBaseline: {
+            styleOverrides: (theme) => ({
+                body: {
+                    '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
+                        backgroundColor:
+                            theme.palette.mode === 'light'
+                                ? theme.palette.grey[300]
+                                : theme.palette.background.default,
+                        width: 10,
+                    },
+                    '&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
+                        borderRadius: theme.shape.borderRadius,
+                        backgroundColor: theme.palette.secondary.dark,
+                    },
+                    '&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus': {
+                        backgroundColor: theme.palette.secondary.main,
+                    },
+                    '&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active': {
+                        backgroundColor: theme.palette.secondary.main,
+                    },
+                    '&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover': {
+                        backgroundColor: theme.palette.secondary.main,
+                    },
+                },
+            }),
         },
     },
 
