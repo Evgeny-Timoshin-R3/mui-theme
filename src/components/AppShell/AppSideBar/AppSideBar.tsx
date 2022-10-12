@@ -1,11 +1,11 @@
 import { Box, ClickAwayListener, Toolbar } from '@mui/material';
 import { ReactNode, useMemo, useState } from 'react';
 
+import AppDrawer from './AppDrawer/AppDrawer';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Divider from '@mui/material/Divider';
-import Drawer from './Drawer';
-import DrawerHeader from './DrawerHeader';
+import DrawerHeader from './AppDrawer/DrawerHeader';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import SideBarContextProvider from '../../../contexts/SideBarContext';
@@ -65,7 +65,7 @@ export default function AppSideBar({
 
     return (
         <ClickAwayListener onClickAway={handleClickAway}>
-            <Drawer variant="permanent" open={open}>
+            <AppDrawer variant="permanent" open={open}>
                 {/* Toolbar gives correct spacing under the application bar*/}
                 <Toolbar />
                 {toggleable && (
@@ -109,7 +109,7 @@ export default function AppSideBar({
                 >
                     {children}
                 </SideBarContextProvider>
-            </Drawer>
+            </AppDrawer>
         </ClickAwayListener>
     );
 }
