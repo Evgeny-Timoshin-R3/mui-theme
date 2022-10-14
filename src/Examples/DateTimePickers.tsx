@@ -1,5 +1,4 @@
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
-import ExampleWrapper from './ExampleLayout/ExampleWrapper';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { TextField } from '@mui/material';
 

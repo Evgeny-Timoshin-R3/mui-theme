@@ -2,14 +2,14 @@ import * as AppRoutes from '../constants/routes';
 
 import { Box, styled, useTheme } from '@mui/material';
 
-import AppBar from '../../components/AppShell/AppBar/AppBar';
-import AppBarIconWrapper from '../../components/AppShell/AppBar/AppBarIconWrapper';
-import AppBarSubLabelImage from '../../components/AppShell/AppBar/AppBarSubLabelImage';
-import AppBarSubTitle from '../../components/AppShell/AppBar/AppBarSubTitle';
-import AppBarTitle from '../../components/AppShell/AppBar/AppBarTitle';
+import AppBar from '../../lib/components/AppShell/AppBar/AppBar';
+import AppBarIconWrapper from '../../lib/components/AppShell/AppBar/AppBarIconWrapper';
+import AppBarSubLabelImage from '../../lib/components/AppShell/AppBar/AppBarSubLabelImage';
+import AppBarSubTitle from '../../lib/components/AppShell/AppBar/AppBarSubTitle';
+import AppBarTitle from '../../lib/components/AppShell/AppBar/AppBarTitle';
 import { Link } from 'react-router-dom';
-import LogoR3Dark from '../../svgs/LogoR3Dark';
-import LogoR3Light from '../../svgs/LogoR3Light';
+import LogoR3Dark from '../../lib/svgs/LogoR3Dark';
+import LogoR3Light from '../../lib/svgs/LogoR3Light';
 
 const StyledLink = styled(Link)(({ theme }) => ({
     marginRight: theme.spacing(2),

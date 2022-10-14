@@ -1,5 +1,5 @@
-import AppSideBar from '../../../components/AppShell/AppSideBar/AppSideBar';
-import AppSideBarItem from '../../../components/AppShell/AppSideBar/AppSideBarItem';
+import AppSideBar from '../../../lib/components/AppShell/AppSideBar/AppSideBar';
+import AppSideBarItem from '../../../lib/components/AppShell/AppSideBar/AppSideBarItem';
 import BalanceRoundedIcon from '@mui/icons-material/BalanceRounded';
 import { Box } from '@mui/material';
 import HouseRoundedIcon from '@mui/icons-material/HouseRounded';

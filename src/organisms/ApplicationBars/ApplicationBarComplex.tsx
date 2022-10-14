@@ -1,16 +1,16 @@
 import { Box, IconButton, useTheme } from '@mui/material';
 
-import AppBar from '../../components/AppShell/AppBar/AppBar';
-import AppBarIconWrapper from '../../components/AppShell/AppBar/AppBarIconWrapper';
-import AppBarNavigationLink from '../../components/AppShell/AppBar/AppBarNavigationLink';
-import AppBarSubLabelImage from '../../components/AppShell/AppBar/AppBarSubLabelImage';
-import AppBarSubTitle from '../../components/AppShell/AppBar/AppBarSubTitle';
-import AppBarTitle from '../../components/AppShell/AppBar/AppBarTitle';
+import AppBar from '../../lib/components/AppShell/AppBar/AppBar';
+import AppBarIconWrapper from '../../lib/components/AppShell/AppBar/AppBarIconWrapper';
+import AppBarNavigationLink from '../../lib/components/AppShell/AppBar/AppBarNavigationLink';
+import AppBarSubLabelImage from '../../lib/components/AppShell/AppBar/AppBarSubLabelImage';
+import AppBarSubTitle from '../../lib/components/AppShell/AppBar/AppBarSubTitle';
+import AppBarTitle from '../../lib/components/AppShell/AppBar/AppBarTitle';
 import DarkModeRoundedIcon from '@mui/icons-material/DarkModeRounded';
 import LightModeRoundedIcon from '@mui/icons-material/LightModeRounded';
-import LogoR3Dark from '../../svgs/LogoR3Dark';
-import LogoR3Light from '../../svgs/LogoR3Light';
-import { useCustomThemeContext } from '../../contexts/ThemeModeContext';
+import LogoR3Dark from '../../lib/svgs/LogoR3Dark';
+import LogoR3Light from '../../lib/svgs/LogoR3Light';
+import { useCustomThemeContext } from '../../lib/contexts/ThemeModeContext';
 
 export default function ApplicationBarComplex() {
     const { setThemeMode } = useCustomThemeContext();

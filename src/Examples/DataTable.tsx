@@ -5,7 +5,7 @@ import {
     GridValueGetterParams,
 } from '@mui/x-data-grid';
 
-import LogoR3Dark from '../../svgs/LogoR3Dark';
+import LogoR3Dark from '../lib/svgs/LogoR3Dark';
 import { ReactNode } from 'react';
 import { styled } from '@mui/material';
 
