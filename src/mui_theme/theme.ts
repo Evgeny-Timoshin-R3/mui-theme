@@ -85,7 +85,7 @@ const theme = createTheme({
             styleOverrides: {
                 root: ({ theme }) => ({
                     transition:
-                        'color ease-in-out 250ms, background-color ease-in-out 250ms !important',
+                        'color ease-in-out 150ms, background-color ease-in-out 150ms !important',
                 }),
             },
         },

@@ -1,7 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function useNestedList(multipleActiveItems?: boolean) {
-    const [expanded, setExpanded] = useState<Map<number, string[]>>(new Map());
+import useLocalStorage from './useLocalStorage';
+
+export default function useNestedList(key: string, multipleActiveItems?: boolean) {
+    const [expandedLocalStorage, setExpandedLocalStorage] = useLocalStorage<string>(key, '');
+
+    const [expanded, setExpanded] = useState<Map<number, string[]>>(
+        new Map(
+            expandedLocalStorage.length !== 0
+                ? new Map(JSON.parse(expandedLocalStorage))
+                : new Map()
+        )
+    );
+
+    useEffect(() => {
+        if (expanded.size === 0) return;
+        setExpandedLocalStorage(JSON.stringify([...expanded]));
+    }, [expanded]);
 
     const toggleExpanded = (level: number, id: string) => {
         const tempExpanded = new Map(expanded);

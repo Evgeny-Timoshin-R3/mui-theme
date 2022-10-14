@@ -2,13 +2,13 @@ import * as React from 'react';
 
 import { Box, Stack } from '@mui/material';
 
-import AppMain from '../../components/AppShell/AppMain';
-import AppWrapper from '../../components/AppShell/AppWrapper';
+import AppMain from '../../lib/components/AppShell/AppMain';
+import AppWrapper from '../../lib/components/AppShell/AppWrapper';
 import ApplicationBarComplex from '../ApplicationBars/ApplicationBarComplex';
 import BasicSideBar from './AppSideBars/BasicSideBar';
 import ComplexSideBar from './AppSideBars/ComplexSideBar';
-import { EXAMPLES } from '../../components/Examples/Examples';
-import ExampleWrapper from '../../components/ExampleLayout/ExampleWrapper';
+import { EXAMPLES } from '../../Examples/Examples';
+import ExampleWrapper from '../../ExampleLayout/ExampleWrapper';
 
 const ExampleShell: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
     return (

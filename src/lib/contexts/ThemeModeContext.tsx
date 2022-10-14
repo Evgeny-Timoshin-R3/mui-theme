@@ -2,7 +2,7 @@ import { PaletteMode, PaletteOptions, Theme, ThemeProvider } from '@mui/material
 import React, { useMemo } from 'react';
 
 import createCtx from './createCtx';
-import createThemeVariant from '../mui_theme/createThemeVariant';
+import createThemeVariant from '../../mui_theme/createThemeVariant';
 import useLocalStorage from '../hooks/useLocalStorage';
 
 interface ThemeModeContextValue {
@@ -36,11 +36,7 @@ const CustomThemeProvider: React.FC<ThemeModeContextProps> = ({
         return createThemeVariant(baseTheme, mode === 'light' ? lightPalette : darkPalette);
     }, [mode]);
 
-    return (
-        <Provider value={{ mode, setThemeMode, theme }}>
-            <ThemeProvider theme={theme}>{children}</ThemeProvider>
-        </Provider>
-    );
+    return <Provider value={{ mode, setThemeMode, theme }}>{children}</Provider>;
 };
 
 export default CustomThemeProvider;

@@ -3,11 +3,11 @@ import { ReactNode, useState } from 'react';
 
 import AppDrawer from './AppDrawer/AppDrawer';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import DrawerHeader from './AppDrawer/DrawerHeader';
-import IconButton from '@mui/material/IconButton';
+import { IconButton } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import SideBarContextProvider from '../../../contexts/SideBarContext';
+import { Provider as SideBarContextProvider } from '../../../contexts/SideBarContext';
+import { useLocalStorage } from '../../../hooks';
 import { useTheme } from '@mui/material/styles';
 
 interface Props {
@@ -16,18 +16,22 @@ interface Props {
     multipleActiveItems?: boolean;
     toggleable?: boolean;
     highlightSelected?: boolean;
+    highlightItemsBasedOnPath?: boolean;
     closeOnSelected?: boolean;
 }
-
-export default function AppSideBar({
+const AppSideBar: React.FC<Props> = ({
     children,
     closeOnClickAway = false,
     toggleable = true,
     highlightSelected = false,
+    highlightItemsBasedOnPath = false,
     closeOnSelected = false,
-}: Props) {
+}) => {
     const theme = useTheme();
-    const [open, setOpen] = useState<boolean>(!toggleable ? true : false);
+    const [open, setOpen] = useLocalStorage<boolean>(
+        'app_sidebar_open',
+        !toggleable ? true : false
+    );
     const [selected, setSelected] = useState<string>('');
 
     const setSelectedHandler = (id: string) => {
@@ -89,11 +93,7 @@ export default function AppSideBar({
                                 }}
                                 onClick={handleDrawerClose}
                             >
-                                {theme.direction === 'rtl' ? (
-                                    <ChevronRightIcon />
-                                ) : (
-                                    <ChevronLeftIcon />
-                                )}
+                                <ChevronLeftIcon />
                             </IconButton>
                         </DrawerHeader>
                     </>
@@ -102,11 +102,19 @@ export default function AppSideBar({
                 {!toggleable && <Box sx={{ mt: 2 }} />}
 
                 <SideBarContextProvider
-                    value={{ open, setOpen, isSelected, setSelected: setSelectedHandler }}
+                    value={{
+                        open,
+                        setOpen,
+                        isSelected,
+                        setSelected: setSelectedHandler,
+                        highlightItemsBasedOnPath,
+                    }}
                 >
                     {children}
                 </SideBarContextProvider>
             </AppDrawer>
         </ClickAwayListener>
     );
-}
+};
+
+export default AppSideBar;

@@ -1,34 +1,52 @@
 {
-  "name": "mui5-theme",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@emotion/react": "^11.9.3",
-    "@emotion/styled": "^11.9.3",
-    "@mui/icons-material": "^5.8.4",
-    "@mui/lab": "^5.0.0-alpha.99",
-    "@mui/material": "^5.9.1",
-    "@mui/styled-engine-sc": "^5.8.0",
-    "@mui/x-data-grid": "^5.17.5",
-    "@mui/x-date-pickers": "^5.0.1",
-    "moment": "^2.29.4",
-    "notistack": "^2.0.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.4.2",
-    "styled-components": "^5.3.5"
-  },
-  "devDependencies": {
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.0.0",
-    "typescript": "^4.6.4",
-    "vite": "^3.0.0"
-  }
+    "name": "mui5-theme",
+    "version": "0.0.0",
+    "private": false,
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview",
+        "build:lib": "npm run build:esm && npm run build:cjs",
+        "build:esm": "tsc",
+        "build:cjs": "tsc --module commonjs --outDir lib/cjs"
+    },
+    "devDependencies": {
+        "@emotion/react": "^11.9.3",
+        "@emotion/styled": "^11.9.3",
+        "@mui/icons-material": "^5.8.4",
+        "@mui/lab": "^5.0.0-alpha.99",
+        "@mui/material": "^5.9.1",
+        "@mui/x-data-grid": "^5.17.5",
+        "@mui/x-date-pickers": "^5.0.1",
+        "@types/react": "^18.0.15",
+        "@types/react-dom": "^18.0.6",
+        "@typescript-eslint/eslint-plugin": "^5.40.0",
+        "@typescript-eslint/parser": "^5.40.0",
+        "@vitejs/plugin-react": "^2.0.0",
+        "moment": "^2.29.4",
+        "notistack": "^2.0.5",
+        "prettier": "^2.7.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "react-hooks": "^1.0.1",
+        "react-router-dom": "^6.4.2",
+        "styled-components": "^5.3.5",
+        "typescript": "^4.6.4",
+        "vite": "^3.0.0"
+    },
+    "peerDependencies": {
+        "@emotion/react": "^11.9.3",
+        "@emotion/styled": "^11.9.3",
+        "@mui/icons-material": "^5.8.4",
+        "@mui/material": "^5.9.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "files": [
+        "lib"
+    ],
+    "main": "./lib/cjs/index.js",
+    "module": "./lib/esm/index.js",
+    "types": "./lib/esm/index.d.ts",
+    "license": "MIT"
 }

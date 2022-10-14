@@ -11,13 +11,18 @@ import {
     useTheme,
 } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { ReactNode, useEffect, useId, useMemo } from 'react';
+import { ReactNode, useEffect, useMemo } from 'react';
 
 import AppSideBarTooltip from './AppSideBarTooltip';
 import { useSideBarContext } from '../../../contexts/SideBarContext';
 
 const expandedButtonMixin = (theme: Theme): SxProps<Theme> => {
-    return { marginLeft: '-3px', borderLeft: `3px ${theme.palette.secondary.light} solid` };
+    return {
+        marginLeft: '-3px',
+        borderLeft: `3px ${theme.palette.secondary.light} solid`,
+        borderTopLeftRadius: 0 + ' !important',
+        borderBottomLeftRadius: 0 + ' !important',
+    };
 };
 
 const selectedButtonMixin = (theme: Theme): SxProps<Theme> => {
@@ -58,8 +63,10 @@ export default function AppSideBarItem({
         setOpen: setOpenSideBar,
         isSelected,
         setSelected,
+        highlightItemsBasedOnPath,
     } = useSideBarContext();
-    const id = useId();
+
+    const id = level + text + to ?? '';
 
     const isExpandable = useMemo(() => {
         return typeof children !== 'undefined';
@@ -86,6 +93,10 @@ export default function AppSideBarItem({
         }
 
         if (isExpandable && toggleExpanded) {
+            if (!isSideBarOpen && expanded) {
+                return;
+            }
+
             toggleExpanded(level, id);
         }
     };
@@ -99,10 +110,13 @@ export default function AppSideBarItem({
         : theme.palette.secondary.light;
 
     useEffect(() => {
+        if (!highlightItemsBasedOnPath) {
+            return;
+        }
         if (window.location.pathname === to) {
             setSelected(id);
         }
-    }, [to]);
+    }, [to, window.location.pathname]);
 
     return (
         <>
@@ -120,10 +134,9 @@ export default function AppSideBarItem({
                 >
                     <ListItemButton
                         sx={(theme) => ({
-                            ...(expanded &&
-                                isSideBarOpen && {
-                                    ...expandedButtonMixin(theme),
-                                }),
+                            ...(expanded && {
+                                ...expandedButtonMixin(theme),
+                            }),
                             ...(selected && {
                                 ...selectedButtonMixin(theme),
                             }),

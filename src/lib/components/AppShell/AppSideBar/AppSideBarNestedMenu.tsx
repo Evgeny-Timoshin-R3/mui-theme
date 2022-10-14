@@ -7,10 +7,18 @@ import useNestedList from '../../../hooks/useNestedList';
 interface Props {
     children?: ReactNode;
     multipleActiveItems?: boolean;
+    localStorageKey?: string;
 }
 
-export default function AppSideBarNestedMenu({ children, multipleActiveItems = true }: Props) {
-    const { isExpanded, toggleExpanded, level } = useNestedList(multipleActiveItems);
+export default function AppSideBarNestedMenu({
+    children,
+    multipleActiveItems = true,
+    localStorageKey = 'app_sidebar_nested_list',
+}: Props) {
+    const { isExpanded, toggleExpanded, level } = useNestedList(
+        localStorageKey,
+        multipleActiveItems
+    );
 
     const renderChildren = (childrenRoot: ReactElement, level: number): ReactNode => {
         level++;

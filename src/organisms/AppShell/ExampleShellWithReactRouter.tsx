@@ -4,11 +4,11 @@ import * as React from 'react';
 import { Box, Stack, Typography } from '@mui/material';
 import { Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
 
-import AppMain from '../../components/AppShell/AppMain';
-import AppWrapper from '../../components/AppShell/AppWrapper';
+import AppMain from '../../lib/components/AppShell/AppMain';
+import AppWrapper from '../../lib/components/AppShell/AppWrapper';
 import ApplicationBarWithReactRouter from '../ApplicationBars/ApplicationBarWithReactRouter';
-import { EXAMPLES } from '../../components/Examples/Examples';
-import ExampleWrapper from '../../components/ExampleLayout/ExampleWrapper';
+import { EXAMPLES } from '../../Examples/Examples';
+import ExampleWrapper from '../../ExampleLayout/ExampleWrapper';
 import ReactRouterIntegrationSideBar from './AppSideBars/ReactRouterIntegration';
 
 function RouterBreadCrumbs() {
