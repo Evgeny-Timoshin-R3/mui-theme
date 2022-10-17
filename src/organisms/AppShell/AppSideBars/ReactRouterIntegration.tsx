@@ -1,6 +1,5 @@
 import * as AppRoutes from '../../constants/routes';
 
-import { Box, Divider } from '@mui/material';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import AccountBalanceWalletRoundedIcon from '@mui/icons-material/AccountBalanceWalletRounded';
@@ -9,6 +8,7 @@ import AppSideBar from '../../../lib/components/AppShell/AppSideBar/AppSideBar';
 import AppSideBarItem from '../../../lib/components/AppShell/AppSideBar/AppSideBarItem';
 import { AppSideBarNestedMenu } from '../../../lib';
 import BalanceRoundedIcon from '@mui/icons-material/BalanceRounded';
+import { Box } from '@mui/material';
 import BrushRoundedIcon from '@mui/icons-material/BrushRounded';
 import HouseRoundedIcon from '@mui/icons-material/HouseRounded';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
@@ -41,8 +41,6 @@ export default function ReactRouterIntegrationSideBar() {
                     onClick={() => {
                         navigate(AppRoutes.HOME);
                     }}
-                    // Without the link prop the highlighting on page reload will break
-                    to={AppRoutes.HOME}
                     selected={pathname === AppRoutes.HOME}
                 />
                 <AppSideBarItem
