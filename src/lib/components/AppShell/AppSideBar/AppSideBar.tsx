@@ -16,7 +16,6 @@ interface Props {
     multipleActiveItems?: boolean;
     toggleable?: boolean;
     highlightSelected?: boolean;
-    highlightItemsBasedOnPath?: boolean;
     closeOnSelected?: boolean;
 }
 const AppSideBar: React.FC<Props> = ({
@@ -24,7 +23,6 @@ const AppSideBar: React.FC<Props> = ({
     closeOnClickAway = false,
     toggleable = true,
     highlightSelected = false,
-    highlightItemsBasedOnPath = false,
     closeOnSelected = false,
 }) => {
     const theme = useTheme();
@@ -107,7 +105,6 @@ const AppSideBar: React.FC<Props> = ({
                         setOpen,
                         isSelected,
                         setSelected: setSelectedHandler,
-                        highlightItemsBasedOnPath,
                     }}
                 >
                     {children}

@@ -5,7 +5,6 @@ interface SideBarContextValue {
     setOpen: (open: boolean) => void;
     setSelected: (id: string) => void;
     isSelected: (id: string) => boolean;
-    highlightItemsBasedOnPath: boolean;
 }
 
 const [useSideBarContext, Provider] = createCtx<SideBarContextValue>();

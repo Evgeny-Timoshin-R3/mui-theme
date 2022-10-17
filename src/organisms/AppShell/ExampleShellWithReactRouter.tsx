@@ -43,10 +43,7 @@ const ExampleShellWithReactRouter: React.FC<{ children?: React.ReactNode }> = ({
                                 </Stack>
                             }
                         />
-                        <Route
-                            path={AppRoutes.HOME}
-                            element={<Box sx={{ flexGrow: 1 }}>HOME COMPONENT RENDERED</Box>}
-                        />
+                        <Route path={AppRoutes.HOME} element={<Box>HOME COMPONENT RENDERED</Box>} />
                         <Route
                             path={AppRoutes.INBOX}
                             element={<Box>INBOX COMPONENT RENDERED</Box>}

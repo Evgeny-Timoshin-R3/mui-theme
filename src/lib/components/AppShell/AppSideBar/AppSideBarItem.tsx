@@ -11,10 +11,24 @@ import {
     useTheme,
 } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { ReactNode, useEffect, useMemo } from 'react';
+import { ReactNode, useMemo } from 'react';
 
 import AppSideBarTooltip from './AppSideBarTooltip';
 import { useSideBarContext } from '../../../contexts/SideBarContext';
+
+const selectedButtonMixin = (theme: Theme): SxProps<Theme> => {
+    return {
+        '&.Mui-selected': {
+            background: theme.palette.secondary.main,
+            '&:hover': {
+                background: theme.palette.secondary.light,
+            },
+            '&.Mui-focusVisible': {
+                background: theme.palette.secondary.main,
+            },
+        },
+    };
+};
 
 const expandedButtonMixin = (theme: Theme): SxProps<Theme> => {
     return {
@@ -25,19 +39,11 @@ const expandedButtonMixin = (theme: Theme): SxProps<Theme> => {
     };
 };
 
-const selectedButtonMixin = (theme: Theme): SxProps<Theme> => {
-    return {
-        background: theme.palette.secondary.main,
-        '&:hover': {
-            background: theme.palette.secondary.light,
-        },
-    };
-};
-
 interface Props {
     text: string;
     icon?: ReactNode;
     level?: number;
+    selected?: boolean;
     children?: ReactNode;
     onClick?: () => void;
     toggleExpanded?: (level: number, id: string) => void;
@@ -48,10 +54,11 @@ interface Props {
 
 export default function AppSideBarItem({
     text,
-    onClick,
-    level = -1,
     icon,
+    level = -1,
+    selected,
     children,
+    onClick,
     toggleExpanded,
     isExpanded,
     component,
@@ -63,7 +70,6 @@ export default function AppSideBarItem({
         setOpen: setOpenSideBar,
         isSelected,
         setSelected,
-        highlightItemsBasedOnPath,
     } = useSideBarContext();
 
     const id = level + text + to ?? '';
@@ -96,27 +102,17 @@ export default function AppSideBarItem({
             if (!isSideBarOpen && expanded) {
                 return;
             }
-
             toggleExpanded(level, id);
         }
     };
 
-    const selected = isSelected(id);
+    const isButtonSelected = selected ?? isSelected(id);
 
-    const contentColor = selected
+    const contentColor = isButtonSelected
         ? theme.palette.secondary.contrastText
         : expanded
         ? theme.palette.secondary.main
         : theme.palette.secondary.light;
-
-    useEffect(() => {
-        if (!highlightItemsBasedOnPath) {
-            return;
-        }
-        if (window.location.pathname === to) {
-            setSelected(id);
-        }
-    }, [to, window.location.pathname]);
 
     return (
         <>
@@ -137,12 +133,11 @@ export default function AppSideBarItem({
                             ...(expanded && {
                                 ...expandedButtonMixin(theme),
                             }),
-                            ...(selected && {
-                                ...selectedButtonMixin(theme),
-                            }),
+                            ...selectedButtonMixin(theme),
                         })}
                         onClick={handleClick}
                         color="secondary"
+                        selected={isButtonSelected}
                     >
                         {icon && (
                             <ListItemIcon

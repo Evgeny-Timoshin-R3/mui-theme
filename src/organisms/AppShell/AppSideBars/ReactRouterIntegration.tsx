@@ -1,7 +1,7 @@
 import * as AppRoutes from '../../constants/routes';
 
 import { Box, Divider } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 import AccountBalanceWalletRoundedIcon from '@mui/icons-material/AccountBalanceWalletRounded';
 import AccountTreeRoundedIcon from '@mui/icons-material/AccountTreeRounded';
@@ -20,9 +20,10 @@ import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 export default function ReactRouterIntegrationSideBar() {
     //Used as an example to show how other libraries could be potentially used to integrate with Side Bar
     const navigate = useNavigate();
+    const { pathname } = useLocation();
 
     return (
-        <AppSideBar closeOnClickAway highlightSelected highlightItemsBasedOnPath>
+        <AppSideBar closeOnClickAway>
             <AppSideBarNestedMenu multipleActiveItems={true} localStorageKey="menu1">
                 <AppSideBarItem
                     text="Examples"
@@ -31,6 +32,7 @@ export default function ReactRouterIntegrationSideBar() {
                     component={Link}
                     // Without the link prop the highlighting on page reload will break
                     to={AppRoutes.EXAMPLES}
+                    selected={pathname === AppRoutes.EXAMPLES}
                 />
                 <AppSideBarItem
                     text="Home"
@@ -41,12 +43,14 @@ export default function ReactRouterIntegrationSideBar() {
                     }}
                     // Without the link prop the highlighting on page reload will break
                     to={AppRoutes.HOME}
+                    selected={pathname === AppRoutes.HOME}
                 />
                 <AppSideBarItem
                     text="Inbox"
                     icon={<InboxIcon />}
                     component={Link}
                     to={AppRoutes.INBOX}
+                    selected={pathname === AppRoutes.INBOX}
                 />
 
                 <AppSideBarItem
@@ -54,6 +58,7 @@ export default function ReactRouterIntegrationSideBar() {
                     icon={<BalanceRoundedIcon />}
                     component={Link}
                     to={AppRoutes.BALANCE}
+                    selected={pathname === AppRoutes.BALANCE}
                 />
                 <AppSideBarItem text="Accounts" icon={<AccountTreeRoundedIcon />}>
                     <AppSideBarItem
@@ -61,6 +66,7 @@ export default function ReactRouterIntegrationSideBar() {
                         icon={<MoveToInboxRoundedIcon />}
                         component={Link}
                         to={AppRoutes.DEPOSITS}
+                        selected={pathname === AppRoutes.DEPOSITS}
                     />
                 </AppSideBarItem>
 
@@ -69,7 +75,8 @@ export default function ReactRouterIntegrationSideBar() {
                         text="Deposits"
                         icon={<MoveToInboxRoundedIcon />}
                         component={Link}
-                        to={'/someshit'}
+                        to={'/something'}
+                        selected={pathname === '/something'}
                     />
                 </AppSideBarItem>
             </AppSideBarNestedMenu>
@@ -92,6 +99,7 @@ export default function ReactRouterIntegrationSideBar() {
                 icon={<SettingsRoundedIcon />}
                 component={Link}
                 to={AppRoutes.SETTINGS}
+                selected={pathname === AppRoutes.SETTINGS}
             />
             <Box sx={{ mb: 2 }} />
         </AppSideBar>

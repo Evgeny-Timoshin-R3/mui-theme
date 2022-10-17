@@ -6,6 +6,7 @@ import AppBar from '../../lib/components/AppShell/AppBar/AppBar';
 import AppBarIconWrapper from '../../lib/components/AppShell/AppBar/AppBarIconWrapper';
 import AppBarSubLabelImage from '../../lib/components/AppShell/AppBar/AppBarSubLabelImage';
 import AppBarSubTitle from '../../lib/components/AppShell/AppBar/AppBarSubTitle';
+import AppBarThemeSwitcher from '../../lib/components/AppShell/AppBar/AppBarThemeSwitcher';
 import AppBarTitle from '../../lib/components/AppShell/AppBar/AppBarTitle';
 import { Link } from 'react-router-dom';
 import LogoR3Dark from '../../lib/svgs/LogoR3Dark';
@@ -46,6 +47,8 @@ export default function ApplicationBarWithReactRouter() {
             <StyledLink to={AppRoutes.DEPOSITS}>Deposits</StyledLink>
 
             <Box sx={{ mr: 3 }} />
+
+            <AppBarThemeSwitcher />
         </AppBar>
     );
 }
